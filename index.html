@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABC 5기 발표 아카이브</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --bg: #f7f7f5; --surface: #fff; --ink: #1a1a1a; --ink-soft: #55554f;
+    --ink-faint: #8f8f86; --line: #e6e6e0; --accent: #2f5d50; --accent-soft: #e8f0ed;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Pretendard", -apple-system, system-ui, sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 40px 24px;
+  }
+  .wrap { max-width: 780px; width: 100%; text-align: center; }
+  .label { font-size: 13px; font-weight: 700; letter-spacing: .12em; color: var(--accent); margin-bottom: 12px; }
+  h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; }
+  .sub { font-size: 15px; color: var(--ink-faint); margin-bottom: 44px; }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; text-align: left; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    padding: 30px 30px 26px; display: block; text-decoration: none; color: var(--ink);
+    transition: border-color .15s, transform .15s, box-shadow .15s;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,.07); }
+  .card .gi { font-size: 13px; font-weight: 700; letter-spacing: .08em; color: var(--accent); margin-bottom: 6px; }
+  .card h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 6px; }
+  .card .desc { font-size: 13.5px; color: var(--ink-faint); margin-bottom: 18px; }
+  .card .go {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13.5px; font-weight: 700; color: #fff;
+    background: var(--accent); border-radius: 999px; padding: 8px 16px;
+  }
+  .card .alt { display: block; font-size: 12.5px; color: var(--ink-soft); margin-top: 12px; }
+  .card .alt:hover { color: var(--accent); }
+  .prev { display: inline-block; margin-top: 36px; font-size: 13px; color: var(--ink-faint); text-decoration: none; }
+  .prev:hover { color: var(--accent); }
+  @media (max-width: 620px) { .cards { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="label">SNU BIG DATA AI CEO</div>
+  <h1>ABC 5기 발표 아카이브</h1>
+  <p class="sub">중간발표와 최종발표를 한곳에서 이어 봅니다. 번호는 두 아카이브 모두 이름 ㄱㄴㄷ순입니다.</p>
+  <div class="cards">
+    <a class="card" href="https://kdtfintech.github.io/ABC_5_midterm/archive5.html">
+      <div class="gi">ABC 5기 · 중간발표</div>
+      <h2>중간발표 30편</h2>
+      <div class="desc">스토리보드 · 질의응답 · 속기록 · 2026. 8. 20 / 8. 25 / 8. 27</div>
+      <span class="go">중간발표 아카이브 보기 →</span>
+    </a>
+    <a class="card" href="final.html">
+      <div class="gi">ABC 5기 · 최종발표</div>
+      <h2>최종발표 30편</h2>
+      <div class="desc">스토리보드 · 질의응답 · 속기록 · 정리 중</div>
+      <span class="go">최종발표 아카이브 보기 →</span>
+    </a>
+  </div>
+  <a class="prev" href="https://kdtfintech.github.io/ABC_final/">3·4기 최종발표 아카이브 ↗</a>
+</div>
+</body>
+</html>

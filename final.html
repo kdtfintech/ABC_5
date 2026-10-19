@@ -1,0 +1,1945 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABC 5기 최종발표 아카이브</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --surface: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #55554f;
+    --ink-faint: #8f8f86;
+    --line: #e6e6e0;
+    --line-soft: #efefe9;
+    --accent: #2f5d50;
+    --accent-soft: #e8f0ed;
+    --hover: #fbfbf8;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+
+  /* ---------- 헤더 ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(247,247,245,.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner {
+    max-width: 1160px; margin: 0 auto;
+    padding: 16px 24px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .brand { display: flex; flex-direction: column; gap: 2px; margin-right: auto; }
+  .brand h1 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
+  .brand p  { font-size: 12.5px; color: var(--ink-faint); }
+  .easy-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13.5px; font-weight: 700; color: #fff; text-decoration: none;
+    background: var(--accent); border-radius: 999px; padding: 9px 18px;
+    white-space: nowrap; transition: opacity .12s;
+  }
+  .easy-btn:hover { opacity: .88; }
+  .search-box {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 999px; padding: 8px 16px; min-width: 260px;
+  }
+  .search-box svg { flex-shrink: 0; color: var(--ink-faint); }
+  .search-box input {
+    border: none; outline: none; background: transparent;
+    font: inherit; font-size: 14px; width: 100%;
+  }
+  .count-chip {
+    font-size: 12.5px; color: var(--ink-soft);
+    background: var(--accent-soft); border-radius: 999px; padding: 6px 12px;
+    white-space: nowrap;
+  }
+
+  /* ---------- 표 ---------- */
+  main { max-width: 1160px; margin: 0 auto; padding: 28px 24px 80px; }
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    text-align: left;
+    font-size: 12px; font-weight: 700; letter-spacing: .05em;
+    color: var(--ink-faint);
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--line);
+    background: #fcfcfa;
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 15px 16px;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 14.5px;
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr { cursor: pointer; transition: background .12s ease; }
+  tbody tr:hover { background: var(--hover); }
+
+  td.col-no {
+    width: 52px; font-size: 13px; font-weight: 600;
+    color: var(--ink-faint); font-variant-numeric: tabular-nums;
+    padding-top: 17px;
+  }
+  td.col-name { width: 130px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
+  td.col-name .sub { display: block; font-size: 12px; font-weight: 400; color: var(--ink-faint); margin-top: 1px; }
+  td.col-topic .t { font-weight: 500; }
+  td.col-topic .summary {
+    display: block; font-size: 13px; color: var(--ink-faint);
+    margin-top: 3px; line-height: 1.55;
+  }
+  td.col-tags { width: 190px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag {
+    font-size: 11.5px; color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 999px; padding: 2px 9px; white-space: nowrap;
+  }
+  .award-badge {
+    display: inline-flex; align-items: center; gap: 3px;
+    font-size: 10.5px; font-weight: 700; letter-spacing: .02em;
+    color: #8a6d1d; background: #faf3dc; border: 1px solid #eddfae;
+    border-radius: 999px; padding: 1px 7px; margin-left: 6px;
+    vertical-align: 2px; white-space: nowrap;
+  }
+  .award-badge::before { content: "🏅"; font-size: 10px; }
+  #dName .award-badge { font-size: 12px; padding: 2px 10px; vertical-align: 4px; }
+  td.col-links { width: 150px; }
+  .mini-link {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12.5px; color: var(--ink-soft); text-decoration: none;
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 3px 10px; margin: 0 4px 4px 0;
+    transition: border-color .12s, color .12s;
+  }
+  .mini-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  tr.empty td { color: var(--ink-faint); }
+  tr.empty td.col-name { font-weight: 500; }
+  .badge-pending {
+    font-size: 11.5px; color: var(--ink-faint);
+    background: var(--line-soft); border-radius: 999px; padding: 2px 9px;
+  }
+  .no-result {
+    text-align: center; color: var(--ink-faint);
+    padding: 70px 0; font-size: 15px; display: none;
+  }
+
+  /* ---------- 상세(스토리보드) 뷰 ---------- */
+  .detail-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(20,20,18,.45);
+    opacity: 0; pointer-events: none;
+    transition: opacity .2s ease;
+  }
+  .detail-overlay.open { opacity: 1; pointer-events: auto; }
+
+  /* 중앙 팝업 래퍼 */
+  .detail-modal-wrap {
+    position: fixed; inset: 0; z-index: 101;
+    display: flex; align-items: center; justify-content: center;
+    padding: 32px;
+    opacity: 0; pointer-events: none;
+    transition: opacity .2s ease;
+  }
+  .detail-modal-wrap.open { opacity: 1; pointer-events: auto; }
+
+  .detail-panel {
+    position: relative;
+    background: var(--surface);
+    border-radius: 16px;
+    box-shadow: 0 24px 70px rgba(0,0,0,.28);
+    display: flex; flex-direction: row;
+    width: min(880px, 100%);
+    max-height: calc(100vh - 64px);
+    overflow: hidden;
+    transform: scale(.96);
+    transition: transform .22s cubic-bezier(.32,.72,.28,1), width .28s ease;
+  }
+  .detail-modal-wrap.open .detail-panel { transform: scale(1); }
+  .detail-panel.viewer-open { width: min(1360px, 100%); }
+
+  .detail-main {
+    display: flex; flex-direction: column;
+    flex: 1 1 0; min-width: 0;
+    max-height: calc(100vh - 64px);
+  }
+
+  /* 옆에 열리는 뷰어 컬럼 */
+  .viewer-col {
+    flex: 0 0 0; width: 0;
+    border-left: 1px solid var(--line);
+    background: var(--bg);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .detail-panel.viewer-open .viewer-col { flex: 0 0 56%; width: 56%; }
+  .viewer-head {
+    display: flex; align-items: center; gap: 10px;
+    padding: 13px 16px 13px 20px; border-bottom: 1px solid var(--line);
+    flex: 0 0 auto;
+  }
+  .viewer-head .vtitle {
+    font-size: 12px; font-weight: 700; letter-spacing: .06em;
+    color: var(--ink-faint); text-transform: uppercase;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .viewer-head .viewer-newtab {
+    margin-left: auto; text-decoration: none; color: var(--ink-soft);
+    font-size: 15px; line-height: 1; padding: 4px 6px; border-radius: 8px;
+  }
+  .viewer-head .viewer-newtab:hover { color: var(--accent); background: var(--line); }
+  .viewer-body { flex: 1 1 auto; min-height: 0; background: #525659; }
+  .viewer-body object, .viewer-body iframe {
+    width: 100%; height: 100%; border: 0; display: block;
+  }
+
+  .detail-top {
+    padding: 20px 32px 0;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .detail-top .no { font-size: 13px; font-weight: 600; color: var(--ink-faint); }
+  .btn-close {
+    margin-left: auto;
+    border: 1px solid var(--line); background: var(--bg);
+    border-radius: 999px; width: 36px; height: 36px;
+    font-size: 16px; cursor: pointer; color: var(--ink-soft);
+    display: grid; place-items: center;
+  }
+  .btn-close:hover { background: var(--line); }
+
+  .detail-scroll { overflow-y: auto; flex: 1; }
+  .detail-head { padding: 12px 32px 26px; border-bottom: 1px solid var(--line); }
+  .detail-head h2 { font-size: 25px; font-weight: 800; letter-spacing: -0.02em; }
+  .detail-head .affil { font-size: 13px; color: var(--ink-faint); margin: 2px 0 6px; }
+  .detail-head .topic { font-size: 16.5px; color: var(--ink-soft); margin-bottom: 16px; line-height: 1.5; }
+  .detail-links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .link-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; text-decoration: none;
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 14px; color: var(--ink-soft);
+    background: var(--surface); font-family: inherit; cursor: pointer;
+    transition: border-color .15s, color .15s, background .15s;
+  }
+  .link-pill:hover { border-color: var(--accent); color: var(--accent); }
+  .link-pill.active {
+    border-color: var(--accent); color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+  }
+  .viewer-head .btn-close { margin-left: 0; width: 30px; height: 30px; font-size: 14px; }
+
+  /* 한눈에 보기 */
+  .highlights {
+    margin: 18px 0 0;
+    background: var(--accent);
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+  .highlights .hl-title {
+    font-size: 11px; font-weight: 700; letter-spacing: .1em;
+    color: rgba(255,255,255,.65); margin-bottom: 8px;
+  }
+  .highlights ul { list-style: none; }
+  .highlights li {
+    position: relative;
+    font-size: 14px; color: #fff; line-height: 1.65;
+    padding-left: 18px; margin-bottom: 4px;
+  }
+  .highlights li:last-child { margin-bottom: 0; }
+  .highlights li::before {
+    content: "";
+    position: absolute; left: 2px; top: 9px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,.55);
+  }
+
+  /* 스토리보드 */
+  .storyboard { padding: 32px; }
+  .sb-label {
+    font-size: 12px; font-weight: 700; letter-spacing: .08em;
+    color: var(--ink-faint); text-transform: uppercase; margin-bottom: 22px;
+  }
+  .scene {
+    position: relative;
+    padding: 0 0 40px 34px;
+    border-left: 2px solid var(--line);
+    margin-left: 8px;
+  }
+  .scene:last-child { border-left-color: transparent; padding-bottom: 8px; }
+  .scene::before {
+    content: "";
+    position: absolute; left: -8px; top: 4px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--surface);
+    border: 3px solid var(--accent);
+  }
+  .scene .scene-no {
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    letter-spacing: .06em; margin-bottom: 4px;
+  }
+  .scene h3 { font-size: 17.5px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 9px; }
+  .scene p { font-size: 15px; color: var(--ink-soft); line-height: 1.85; white-space: pre-line; }
+  .scene .quote {
+    margin-top: 14px; padding: 13px 17px;
+    background: var(--accent-soft); border-radius: 10px;
+    font-size: 14px; color: var(--accent); line-height: 1.7;
+  }
+
+  /* 숫자 카드 */
+  .facts {
+    margin-top: 16px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 8px;
+  }
+  .fact {
+    background: var(--bg); border: 1px solid var(--line-soft);
+    border-radius: 10px; padding: 12px 15px;
+  }
+  .fact b { display: block; font-size: 18px; font-weight: 800; letter-spacing: -0.01em; }
+  .fact span { font-size: 12px; color: var(--ink-faint); line-height: 1.45; display: block; margin-top: 2px; }
+
+  /* 플로우 (단계 시각화) */
+  .flow {
+    margin-top: 16px;
+    display: flex; flex-wrap: wrap; align-items: stretch; gap: 6px;
+  }
+  .flow-step {
+    flex: 1 1 0; min-width: 96px;
+    background: var(--bg); border: 1px solid var(--line);
+    border-radius: 10px; padding: 11px 12px;
+    text-align: center; position: relative;
+  }
+  .flow-step .fs-num {
+    display: inline-grid; place-items: center;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: 11px; font-weight: 700; margin-bottom: 6px;
+  }
+  .flow-step .fs-title { display: block; font-size: 13px; font-weight: 700; line-height: 1.4; }
+  .flow-step .fs-sub { display: block; font-size: 11.5px; color: var(--ink-faint); line-height: 1.45; margin-top: 3px; }
+  .flow-arrow {
+    align-self: center; color: var(--ink-faint);
+    font-size: 14px; flex: 0 0 auto; padding: 0 1px;
+  }
+
+  /* 체크리스트 */
+  .check-list { margin-top: 14px; display: grid; gap: 7px; }
+  .check-item {
+    display: flex; gap: 10px; align-items: flex-start;
+    background: var(--bg); border: 1px solid var(--line-soft);
+    border-radius: 10px; padding: 11px 14px;
+    font-size: 14px; color: var(--ink-soft); line-height: 1.6;
+  }
+  .check-item::before {
+    content: "✓";
+    flex-shrink: 0;
+    width: 20px; height: 20px; border-radius: 6px;
+    background: var(--accent-soft); color: var(--accent);
+    font-size: 12px; font-weight: 800;
+    display: grid; place-items: center;
+    margin-top: 2px;
+  }
+  .check-item b { color: var(--ink); font-weight: 700; }
+
+  /* 미니 테이블 */
+  .stable-wrap { margin-top: 16px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  table.stable { width: 100%; border-collapse: collapse; }
+  .stable th {
+    text-align: left; font-size: 12px; font-weight: 700;
+    color: var(--ink-faint); background: #fcfcfa;
+    padding: 9px 14px; border-bottom: 1px solid var(--line);
+    letter-spacing: .03em; white-space: nowrap;
+  }
+  .stable td {
+    word-break: keep-all;
+    font-size: 13.5px; color: var(--ink-soft);
+    padding: 10px 14px; border-bottom: 1px solid var(--line-soft);
+    line-height: 1.6; vertical-align: top;
+  }
+  .stable tr:last-child td { border-bottom: none; }
+  .stable td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
+
+  /* Q&A */
+  .qna { padding: 6px 32px 46px; }
+  .qna-label {
+    font-size: 12px; font-weight: 700; letter-spacing: .08em;
+    color: var(--ink-faint); text-transform: uppercase;
+    margin-bottom: 18px; padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+  .qa-item { margin-bottom: 24px; }
+  .qa-item .q {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 14.5px; font-weight: 600; line-height: 1.65;
+    margin-bottom: 9px;
+  }
+  .qa-item .a {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 14.5px; color: var(--ink-soft); line-height: 1.8;
+    white-space: pre-line;
+  }
+  .qa-mark {
+    flex-shrink: 0;
+    width: 22px; height: 22px; border-radius: 7px;
+    display: grid; place-items: center;
+    font-size: 11.5px; font-weight: 800;
+    margin-top: 2px;
+  }
+  .q .qa-mark { background: var(--ink); color: #fff; }
+  .a .qa-mark { background: var(--accent-soft); color: var(--accent); }
+
+  .empty-detail {
+    padding: 60px 32px; text-align: center; color: var(--ink-faint); font-size: 15px;
+  }
+
+  /* ---------- 반응형 ---------- */
+  @media (max-width: 760px) {
+    .header-inner { padding: 14px 16px; }
+    .search-box { min-width: 0; flex: 1; }
+    main { padding: 16px 12px 60px; }
+    thead { display: none; }
+    table:not(.stable), tbody, tr, td { display: block; width: 100%; }
+    table.stable, .stable tbody, .stable tr { display: table; }
+    table.stable { display: table; }
+    .stable tbody { display: table-row-group; }
+    .stable tr { display: table-row; }
+    .stable td, .stable th { display: table-cell; }
+    tbody tr { padding: 14px 16px; border-bottom: 1px solid var(--line-soft); }
+    tbody td { border: none; padding: 2px 0; }
+    td.col-no { width: auto; }
+    td.col-tags, td.col-links { width: auto; padding-top: 8px; }
+    .storyboard, .detail-head, .detail-top { padding-left: 20px; padding-right: 20px; }
+    .qna { padding-left: 20px; padding-right: 20px; }
+    .detail-modal-wrap { padding: 12px; }
+    .detail-panel, .detail-panel.viewer-open { flex-direction: column; width: 100%; }
+    .detail-panel.viewer-open .viewer-col { flex: 0 0 60vh; width: 100%; border-left: none; border-top: 1px solid var(--line); }
+    .flow { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); align-self: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <h1>ABC 5기 최종발표 아카이브</h1>
+      <p>30명의 최종발표를 한곳에 정리합니다</p>
+    </div>
+    <a class="easy-btn" href="index.html" style="background: var(--surface); color: var(--accent); border: 1px solid var(--accent);">← 5기 홈</a>
+    <a class="easy-btn" href="https://kdtfintech.github.io/ABC_5_midterm/archive5.html" target="_blank" rel="noopener" style="background: var(--surface); color: var(--accent); border: 1px solid var(--accent);">5기 중간발표 아카이브 ↗</a>
+    <div class="search-box">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="searchInput" type="text" placeholder="이름, 주제, 키워드 검색">
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>NO</th>
+          <th>발표자</th>
+          <th>발표 주제</th>
+          <th>키워드</th>
+          <th>자료</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="no-result" id="noResult">검색 결과가 없습니다.</div>
+  </div>
+</main>
+
+<!-- 상세 패널 -->
+<div class="detail-overlay" id="overlay"></div>
+<div class="detail-modal-wrap" id="modalWrap">
+  <aside class="detail-panel" id="panel" aria-hidden="true">
+    <div class="detail-main">
+      <div class="detail-top">
+        <span class="no" id="dNo"></span>
+        <button class="btn-close" id="btnClose" aria-label="닫기">✕</button>
+      </div>
+      <div class="detail-scroll" id="detailScroll">
+        <div class="detail-head">
+          <h2 id="dName"></h2>
+          <div class="affil" id="dAffil"></div>
+          <div class="topic" id="dTopic"></div>
+          <div class="detail-links" id="dLinks"></div>
+          <div id="dHighlights"></div>
+        </div>
+        <div id="dBody"></div>
+      </div>
+    </div>
+    <div class="viewer-col" id="viewerCol">
+      <div class="viewer-head">
+        <span class="vtitle" id="viewerTitle"></span>
+        <a class="viewer-newtab" id="viewerOpenNew" href="#" target="_blank" rel="noopener" title="새 탭에서 열기">↗</a>
+        <button class="btn-close" id="viewerClose" aria-label="뷰어 닫기">✕</button>
+      </div>
+      <div class="viewer-body" id="viewerBody"></div>
+    </div>
+  </aside>
+</div>
+
+<script>
+/* =========================================================
+   발표 데이터
+   - 이 배열만 수정하면 사이트 전체가 갱신됩니다.
+   - GitHub Pages 배포 시 자료 링크는 저장소 내 상대 경로 사용:
+       slides/01.pdf, transcripts/01.html ...
+   - 같은 번호의 중간발표: https://kdtfintech.github.io/ABC_5_midterm/archive5.html#01
+   - 스토리보드 scene에 넣을 수 있는 요소:
+       title  : 소제목 (필수)
+       text   : 본문
+       quote  : 인상적인 발언 (인용 박스)
+       facts  : 숫자 카드 [{num, label}]
+       flow   : 단계 흐름 [{t: 제목, s: 부연(선택)}]
+       list   : 체크리스트 ["<b>제목</b>, 설명", ...]
+       table  : 미니 표 {head: [...], rows: [[...], ...]}
+   - highlights : 상세 상단 '한눈에 보기' 3~4줄
+   - qna        : 질의응답 [{q, a}]
+   ========================================================= */
+const PRESENTATIONS = [
+  {
+    no: 1,
+    name: "강성민",
+    affil: "로완",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 2,
+    name: "김견",
+    affil: "전 현대차그룹 HMG경영연구원장",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 3,
+    name: "김기동",
+    affil: "코나투스 · 대표",
+    topic: "이탈을 먼저 보는 영업 CRM: A안 「법인 고객 이용 활성화」, 설계부터 운영 배포까지의 기록",
+    summary: "법인 대리운전 회사 엔젤플러스를 직접 경영하게 된 코나투스 김기동 대표가, 3년 치 140만~150만 건의 호출 데이터로 AI가 이탈·복귀·신규 신호의 기준을 만들게 하고, 매일 아침 영업 담당자에게 케어할 고객사 10곳을 보내 처리 결과까지 앱으로 관리하는 CRM을 5주 만에 만들어 운영 중인 과정을 소개한 발표.",
+    tags: ["대리운전·모빌리티", "법인 고객 CRM", "이탈 신호 탐지", "코호트 분석", "AI 콜센터"],
+    links: [
+      { label: "발표 슬라이드 (PDF)", url: "slides/03.pdf" },
+      { label: "속기록", url: "transcripts/03.html" },
+      { label: "중간발표", url: "https://kdtfintech.github.io/ABC_5_midterm/archive5.html#03" }
+    ],
+    highlights: [
+      "2022년 인수한 법인 대리 엔젤플러스(올해 매출 200억~250억 원, 영업이익률 4~5%)를 올해 4월부터 직접 경영하며, 먼저 콜센터에서 함께 전화를 받아 9월부터 콜 응대율 99%를 만들었다",
+      "3년 치 140만~150만 건의 호출 데이터를 처음 분석해 보니 1년 동안 585개 법인이 떠났지만 아무도 몰랐다. AI에게 데이터를 보여주고 이탈·복귀·신규 등 케어 플래그의 기준을 만들게 했다",
+      "5주 개발로 매일 아침 10시 담당자별 케어 목록 약 10건을 메일과 CRM 앱으로 보내고 처리 결과를 체크리스트로 기록한다. 늘어난 AWS 비용은 월 1만 5천 원, 병행 중인 AI 콜센터 에이전트는 문의의 절반을 처리 중",
+      "심사위원: 이탈을 판단할 데이터가 충분한지와 정확도를 물었고, 대화·비고·배경 같은 맥락 정보와 생존 분석으로의 확장, 총무처·개인 호출 패턴에 따른 타깃팅, 가격에 둔감한 법인 대상 VIP 대리를 제안"
+    ],
+    scenes: [
+      {
+        title: "코나투스: 택시와 대리, 두 개의 300억",
+        text: "김기동 대표는 코나투스를 창업해 올해 9년째 운영하고 있다. 모빌리티 회사이고 주력 사업은 택시와 대리로 나뉜다. 올해 택시에서 300억 원 남짓, 대리에서 300억 원 정도로 매출이 반반 정도 될 전망이다.\n택시는 현재 가맹 사업을 하고 있지만 앞으로는 자율주행 로봇택시로 갈 것이라 보고, 늦게 오더라도 그에 대비하는 플릿 매니지먼트 사업을 살피고 있다. 대리는 자율주행이 되면 없어질 사업이다. 그러나 없어질 때까지 꽤 많은 시간이 남아 있고, 그동안 회사의 큰 캐시카우가 되어 줘야 한다. 이번 발표는 그중 2022년에 인수한 법인 대리 업체 엔젤플러스를 다뤘다.",
+        facts: [
+          { num: "9년째", label: "코나투스 창업 후 운영 기간" },
+          { num: "300억 원+", label: "올해 택시 사업 예상 매출" },
+          { num: "300억 원", label: "올해 대리 사업 예상 매출" }
+        ]
+      },
+      {
+        title: "엔젤플러스의 구조: 수수료 20%인데 영업이익률은 4~5%",
+        text: "엔젤플러스는 올해 200억~250억 원의 매출이 예상되지만 영업이익률은 4~5% 수준이다. 대리는 수수료가 20%인 비즈니스인데도 이익률이 낮은 이유는 상담원 인건비다. 고정비 비즈니스라 연매출 150억 원 밑으로 내려가면 적자, 그 위로 올라가면 다 흑자가 나는 구조다.\n인수 후 꾸준히 연 10억 원 안팎의 영업이익을 냈지만, 올해 콜 처리를 비롯한 여러 지표가 떨어지자 발표자는 수업이 시작되기 직전인 4월에 기존 대표이사를 해임하고 직접 경영에 나섰다.",
+        facts: [
+          { num: "200억~250억 원", label: "엔젤플러스 올해 예상 매출" },
+          { num: "4~5%", label: "영업이익률, 상담원 인건비가 원인" },
+          { num: "20%", label: "대리 비즈니스의 수수료율" },
+          { num: "150억 원", label: "연매출 손익분기선, 고정비 구조" }
+        ]
+      },
+      {
+        title: "첫 번째 처방: 대표가 직접 전화를 받다",
+        text: "데이터를 들여다보며 무엇부터 고칠지 찾았더니, 첫 번째는 콜 응대율이 너무 낮다는 것이었다. 콜 하나가 곧 돈인데 전화를 못 받아 돈을 못 버는 구조였다. 발표자는 화요일·목요일 수업을 듣고 남는 시간이면 콜센터에 가서 상담원들과 함께 전화를 받았다. 그 결과 9월부터 콜 응대율이 99%까지 올라 거의 모든 전화를 받고 있다.\n전화를 잘 받아야 상품을 팔 수 있으니, 다음 질문은 어떻게 고객을 더 끌어들이고 기존 고객을 더 활성화할 것인가였다.",
+        quote: "결국 콜 하나를 받으면 그게 다 돈인데, 전화를 못 받아서 돈을 못 버는 구조였기 때문에 맨 처음에는 전화를 받는 것부터 시작했습니다."
+      },
+      {
+        title: "데이터의 발견: 1년 동안 585개 법인이 떠났다",
+        text: "데이터를 보니 3년 동안 140만~150만 건 정도의 호출 기록이 있었다. 주문번호, 법인 아이디, 이용한 임직원, 임직원별 고객 등급, 출발지·도착지, 시간, 소요 거리까지 분석할 거리가 넘쳤다. 이는 엔젤플러스를 인수한 이유이기도 하다. 창업자가 데이터에 욕심이 많아 시스템을 만들고 데이터를 모아 두었고, 발표자는 이런 식으로 데이터가 모인 업체는 많지 않다고 봤다.\n처음 분석해 가장 먼저 받은 결과는 1년 동안 585개 법인 고객이 떨어져 나갔다는 사실이었다. 그만큼 수수료가 빠졌고, 진작 영업팀이 케어했다면 덜 빠졌을 것이다. 새로 들어온 고객도 온보딩이나 쿠폰 같은 케어 없이 그냥 쓰고 있었다. 발표자는 이렇게 하지 않았는데도 유지가 되고 있었다는 점이 놀라웠고, 경쟁사 중 이렇게 하는 회사가 많지 않으니 이제부터라도 케어하면 더 커 갈 여지가 있다고 판단했다.",
+        facts: [
+          { num: "140만~150만 건", label: "3년간 쌓인 엔젤플러스 호출 데이터" },
+          { num: "585개", label: "1년 동안 떨어져 나간 법인 고객" },
+          { num: "하루 3천 건", label: "일주일이면 2만 건, 사람이 볼 수 없는 규모" }
+        ]
+      },
+      {
+        title: "문제 정의: 하루 3천 건 속에서 영업팀은 아무것도 보지 못한다",
+        text: "하루 3천 건 정도의 콜이 나오지만, 영업사원이 유치한 기업이 처음으로 호출한 순간도, 감사 인사를 할 타이밍도, 조금씩 호출을 덜 쓰며 경쟁사로 옮겨 가는 징후도 볼 수 없었다. 일주일이면 2만 건이 쌓이니 알 방법이 없었다. 그렇다고 대리 회사 영업 직원들에게 LLM을 공부시켜 직접 만들게 하거나 데이터를 보게 하는 것도 어려웠다.\n그래서 발표자는 전날 호출 데이터로 영업 직원 한 명당 10개 고객사 정도에 대해 케어 플래그를 날려 주는 기능을 직접 개발했다. 무엇이 이탈 신호이고 무엇이 좋은 신호인지도 AI에게 데이터를 보여주고 만들어 달라고 했다.",
+        list: [
+          "<b>서서히 줄어드는 이탈</b>, 장기적으로 이용이 천천히 감소하는 경우",
+          "<b>최근 4주 급감</b>, 예전 대비 크게 떨어진 경우. 계절성은 보정",
+          "<b>신규 후 미사용</b>, 한 번 쓰고 다시 안 쓰는 경우는 '우리가 뭔가 잘못한 것'으로 간주",
+          "<b>복귀 · 첫 이용</b>, 한동안 안 쓰다 돌아온 고객과 처음 이용한 고객도 케어 대상"
+        ]
+      },
+      {
+        title: "운영 방식: 아침 10시, 담당자별 10건, 체크리스트로 마감",
+        text: "전일 데이터 3천 건 정도가 들어가면 만들어 둔 기준선에 따라 케어 목록이 10개 정도 나온다. 이 목록이 아침 10시에 각 담당자의 메일과 휴대폰의 고객 CRM 앱으로 전달되고, 담당자는 하루 10건을 반드시 처리해야 한다. 화면에는 '복귀', '며칠째 침묵 중' 같은 플래그와 내용이 나오고, 담당자는 전화를 했는지, 쿠폰을 보냈는지 처리 결과를 앱의 체크리스트로 리포트해야 한다.\n법인 고객이라 휴먼 터치가 중요하다. 총무팀에 직접 전화하기도 하고, 실제 이용한 임직원에게 쿠폰을 보내거나 감사 인사를 하기도 한다. 개발은 5주 정도 걸렸고, 테스트하며 계속 고쳐 쓰는 중이다.",
+        flow: [
+          { t: "전일 호출 데이터", s: "약 3천 건 입력" },
+          { t: "기준선으로 플래그 생성", s: "이탈 · 복귀 · 신규 · 침묵" },
+          { t: "아침 10시 전달", s: "담당자별 메일과 CRM 앱, 약 10건" },
+          { t: "처리와 기록", s: "전화 · 쿠폰 · 감사 인사, 체크리스트 리포트" }
+        ]
+      },
+      {
+        title: "중간발표 이후: 두 후보안의 비교에서 실제로 돌아가는 CRM으로",
+        text: "중간발표 때 발표자는 엔젤플러스의 법인 고객 이용 활성화(A안)와 콜마너의 대리 호출 수요예측(B안)을 나란히 놓고, 무엇을 먼저 할지 심사위원들에게 물었다. 당시 A안은 RFM 기준선에서 LightGBM, SHAP, Cox 모형, Uplift 모델링으로 단계적으로 쌓아 가는 계획이었고, 법인 대리는 회사가 요금을 내니 할인 쿠폰이 통하지 않는다는 점을 약점으로 꼽았다.\n최종발표에서는 A안 방향을 가장 단순한 형태로 먼저 현장에 붙였다. 복잡한 모델 대신 AI가 데이터를 보고 만든 플래그 기준선이 매일 돌아가고, 쿠폰은 할인 수단이라기보다 총무팀 전화, 감사 인사와 함께 쓰는 휴먼 터치의 일부가 됐다. 수요예측(B안)은 이번 발표에서 다루지 않았다.",
+        table: {
+          head: ["구분", "중간발표 (계획)", "최종발표 (실제)"],
+          rows: [
+            ["과제", "A안(법인 고객 이용 활성화)과 B안(대리 호출 수요예측) 중 선택을 질문", "엔젤플러스 법인 고객 케어 CRM을 구축해 운영 중"],
+            ["방법", "RFM 기준선 → LightGBM · SHAP · Cox · Uplift", "AI가 만든 이탈·복귀·신규 플래그 기준선, 이후 룰로 동작"],
+            ["실행", "안내를 보내야 움직일 대상만 선별해 발송", "매일 아침 10시 담당자별 약 10건, 전화 · 쿠폰 · 감사 인사"],
+            ["검증", "10주 내 선행지표, 갱신 시점에 계약 갱신율", "6~8주 코호트로 액션 유무 사후 비교. 아직 매출 수치 변화는 없음"]
+          ]
+        }
+      },
+      {
+        title: "기대 효과: 방어만 잘해도, 점유율만 올려도",
+        text: "발표자는 떠나는 고객 중 일부만 지켜도 연 10억 원 정도의 영업이익을 내는 회사가 영업이익률을 높일 수 있다고 봤다. 법인 고객은 보통 여러 대리 업체를 중복해서 쓰기 때문에, 그 안에서 점유율을 높였을 때 얼마나 벌 수 있는지도 정리했다.\n아직 숫자로 매출이 바뀐 것은 아니지만 담당자들의 만족도가 꽤 높다. 그래서 플래그를 더 늘리고 관리 범위도 넓혀 보자는 이야기가 나오고 있고, 현재의 몇 가지 기준은 쓰면서 계속 바꿔 가고 있다.\n발표자는 올해 가장 잘한 일로 이 수업을 들은 것을 꼽았다. 수업이 없었다면 콜센터에서 함께 전화 받고 영업하며 몸으로 뛰는 데 그쳤을 텐데, 데이터를 보며 직접 무언가를 만드는 일이 개인적으로도 큰 기쁨이었다고 했다.",
+        quote: "아마 이 수업이 없었다면 제가 직접 데이터를 보고 직원들의 CRM을 만들어서 나눠 주는 일은 못 했을 것 같습니다."
+      },
+      {
+        title: "병행 과제: 문의 절반을 처리하는 AI 콜센터 에이전트",
+        text: "영업이익률을 끌어내리는 상담원 인건비 문제에는 AI 콜센터 에이전트로 대응하고 있다. 지난달부터 테스트 중인데, 100건이 들어오면 50건 정도를 에이전트가 처리한다. 80~90%까지 처리할 수 있게 되면 다른 법인 대리 업체와 대리 업체에 판매할 계획이다. 지난달 대리 업체 대표 30여 명을 불러 시연했더니 일정 수준만 되면 돈을 내고 쓰고 싶다는 반응이었다.\n발표자는 질의응답 끝에 AICC가 튜닝 중이라 이번에 가져오지 못했다고 아쉬워하며, 이것까지 되면 매출 200억 원 기준으로 영업이익이 40억 원까지 갈 수 있다고 했다.",
+        facts: [
+          { num: "100건 중 50건", label: "현재 AI 콜센터 에이전트 처리 비율" },
+          { num: "80~90%", label: "외부 판매를 시작할 처리율 목표" },
+          { num: "30여 곳", label: "시연에 참여한 대리 업체 대표" },
+          { num: "40억 원", label: "AICC 완성 시 매출 200억 원 기준 기대 영업이익" }
+        ]
+      },
+      {
+        title: "질의응답에서 나온 현장 감각: 코호트 주기와 비고란",
+        text: "이탈을 판단할 데이터가 충분하냐는 질문에 발표자는 하루 3천 건이 수요 예측에는 턱없이 부족하지만 CRM에는 부족하지 않다고 답했다. 택시 중개를 할 때는 코호트를 4주 주기로 보면 이탈 여부가 대략 맞았는데, 대리는 6~8주로 봐야 했다. 2~3주로 보면 이탈과 복귀가 반복돼 보이지만 주기를 길게 잡으면 꾸준히 쓰는 고객이 드러난다. 다만 그 결과를 보고 움직이면 이미 늦기 때문에, 그 전에 잡아낼 기준선을 만들고 있고, 액션을 넣은 곳과 넣지 않은 곳이 DB에 쌓이니 사후 비교로 계속 튜닝할 계획이다.\n차량 안의 대화는 들어오지 않지만, 기사들이 운행 후 위험 사항이나 상황실이 알아야 할 내용을 비고란에 남긴다. 주차가 오래 걸렸다거나 배차 대기가 5분 이상 걸려 밖에서 10분씩 기다렸다는 식의, 전날 이용한 임원이 불편했을 법한 플래그는 따로 영업사원에게 전달한다. 엔젤플러스가 관리하는 정장 기사 3천 명 정도는 컴플레인 소지가 있는 일을 기록하도록 훈련돼 있지만 일반 기사는 그렇지 못하다. 비용도 부담이 아니다. AWS에서 돌리는데 늘어난 비용은 월 1만 5천 원 정도이고, 한 번 기준선을 업데이트하면 그다음부터는 AI 없이 동작한다.",
+        quote: "택시는 코호트를 볼 때 주기를 4주 정도로 하면 대충 맞았는데, 대리는 해 보니 4주보다는 6주에서 8주 정도로 봐야 하는 것 같습니다."
+      }
+    ],
+    qna: [
+      {
+        q: "새로 들어오는 법인이든 이탈하는 법인이든 미리 아는 것이 중요하고, 관건은 그것을 포착할 요인(x)이다. 그것을 판단하기에 충분한 데이터를 가지고 있다고 보나?",
+        a: "충분하다고 본다. 하루 3천 건은 수요 예측에는 턱없이 부족하지만 CRM에는 부족하지 않다. 택시는 코호트를 4주 주기로 보면 이탈 여부가 대략 맞았는데 대리는 6~8주로 봐야 한다. 다만 그 결과를 보고 움직이면 이미 이탈한 뒤이므로, 그 전에 찾아낼 기준선을 계속 만들고 있다. 액션 후 코호트가 덜 빠지면 잘하고 있다는 신호인데, 이는 적어도 4~6주 뒤에 나타나니 그동안 계속 튜닝해 나가야 한다."
+      },
+      {
+        q: "잘 맞는다고 했는데 어느 수준인가? 이 팩터로 보니 70~80% 예측이 된다는 식의 수치가 있나?",
+        a: "구체적인 정확도 수치는 제시하지 않았다. 코호트를 2~3주로 보면 이탈과 복귀가 반복돼 주기를 너무 짧게 본 것이고, 길게 보면 꾸준히 쓰는 고객이 일정하게 드러난다는 기준으로 보고 있다. 감소하는 고객사 중 액션을 넣은 곳과 안 넣은 곳이 DB에 쌓이니, 사후에 코호트 변화를 비교해 효과 있는 것과 없는 것을 가려 튜닝할 계획이다."
+      },
+      {
+        q: "법인 대리업은 사람 사이의 관계가 중요하다. 내부 대화나 법인의 상태처럼, 나갈 곳은 나가고 매출이 늘어나는 법인은 더 쓰려 하는 맥락 정보가 더 있으면 정확도가 높아지지 않겠나?",
+        a: "확실히 그런 부분이 있고, 회사가 모르는 배경도 굉장히 많다고 인정했다."
+      },
+      {
+        q: "컨텍스트를 늘리고 생존 분석 관점으로 이탈을 연결해 AI 에이전트가 분석하게 하면 배경까지 잘 추론할 것이다. 그렇게 늘리면 비용이 많이 들 텐데 감당 가능한가? 고객 관리는 게임 등 여러 업종에서 중요하니 대량 데이터 처리를 효율화해 제품화하는 것도 좋겠다.",
+        a: "AWS에서 돌리는데 늘어난 비용이 월 1만 5천 원 정도라 문제가 없다. 기준선을 한 번 업데이트하면 그다음부터는 AI 없이 그 기준대로 동작만 하기 때문에 비용이 많이 들지 않는다."
+      },
+      {
+        q: "차량 안에서 이루어진 대화도 사용하나? 대리를 쓰는 고객은 거의 음주 상태라 불쾌한 일이 생길 수 있는데, 손님이 결제 후 욕설을 하고 나가는 것을 본 적이 있다. 그런 이벤트는 비고란에 남지 않고 있지 않나?",
+        a: "차량 내 대화는 들어오지 않는다. 대신 기사들이 운행 후 위험 사항이나 상황실이 알아야 할 내용을 비고란에 남기고, 주차 지연이나 배차 대기 5분 이상처럼 임원이 불편했을 법한 플래그는 영업사원에게 따로 전달한다. 엔젤플러스가 관리하는 정장 기사 3천 명 정도는 컴플레인 소지가 있는 일을 기록하도록 훈련돼 있지만 일반 기사는 잘 못하고 있다."
+      },
+      {
+        q: "대표가 중요성을 알고 솔선수범하는 것이 조직 혁신의 가장 빠른 길이다. 맥락 정보를 넣어 데이터베이스를 확대하고, 총무처를 통해 부르는 법인과 개인이 직접 부르는 법인을 구분해 총무처 마케팅과 개인 쿠폰으로 타깃을 달리하라. 가격에 민감하지 않은 법인에는 특화된 기사가 프리미엄 가격으로 서비스하는 VIP 대리도 고려해 보라.",
+        a: "오늘 AICC도 보여주고 싶었지만 튜닝 중이라 가져오지 못했다. 응답을 꽤 잘하며, 이것까지 되면 매출 200억 원 기준 영업이익이 40억 원까지 갈 수 있다. 나중에 기회가 되면 보여주겠다고 답했다."
+      }
+    ]
+  },
+  {
+    no: 4,
+    name: "김동환",
+    affil: "넥시드벤처스 · 대표",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 5,
+    name: "김미영",
+    affil: "포스코DX · IT사업실장/전무",
+    topic: "AI를 활용한 SI 기업의 10X 성과 달성 전략: 포스코DX, 그룹 AX를 이끄는 표준 플랫폼 기업으로",
+    summary: "생성형 AI로 '인력 × 단가' 수익 공식이 무너지는 SI 기업 포스코DX가 제안·구축·운영 전 라이프사이클을 AI와 사람이 협업하는 방식으로 재설계해, 제안 리드타임 70일을 7일로 줄이는 10배 생산성을 노리고 AI Native Company로 전환하려는 6개월간의 실행 결과를 정리한 발표.",
+    tags: ["SI·IT서비스", "AX 전략", "멀티 에이전트", "암묵지 자산화", "변화 관리"],
+    links: [
+      { label: "발표 슬라이드 (PDF)", url: "slides/05.pdf" },
+      { label: "속기록", url: "transcripts/05.html" },
+      { label: "중간발표", url: "https://kdtfintech.github.io/ABC_5_midterm/archive5.html#05" }
+    ],
+    highlights: [
+      "문제는 SI 업의 수익 공식 자체: 생성형 AI가 등장하며 '인력 × 단가' 모델이 무너지고, 생산성을 높일수록 매출이 줄며, 경쟁자는 동종 SI가 아니라 빅테크와 AI 모델 기업이 됐다",
+      "해법은 제안·구축·운영 라이프사이클 전체를 AI와 함께 재설계하는 것: AI가 초안·감시·반복 처리를 맡고 사람은 요건 확정, 아키텍처 결정, 승인, 고객에 집중한다",
+      "제안 단계는 추진계획서 작성까지 70일 걸리던 과정을 7일로 줄이는 10배 목표 아래 한 장짜리 요청에서 31장 초안을 만드는 에이전트를 검증 중이고, 구축 단계는 ACE 플랫폼에 16개 에이전트, 운영 단계는 리드타임 30~50% 감축을 목표로 한다",
+      "심사위원: RAG로 암묵지를 쌓을 때의 정보 손실과 데이터 증가 대응, AI의 레거시 코드 수정 한계를 짚었고, 컴퓨터 사용 에이전트로 암묵지를 넓혀 보라는 제안과 DX 조직의 저항을 세대 교체로 푸는 덩샤오핑식 변화 관리 조언이 나왔다"
+    ],
+    scenes: [
+      {
+        title: "출발점: 10X라는 질문으로 시작한 6개월",
+        text: "발표자는 ABC 과정에 지원하면서 붙들었던 질문으로 발표를 열었다. SI 기업으로서 AI를 활용해 10배의 성과를 어떻게 낼 것인가. 이는 포스코DX만의 고민이 아니라 모든 기업의 고민이라고 봤고, 지난 6개월 동안 이 질문에 대해 찾은 작은 결과를 보고하는 자리로 이번 발표를 규정했다.\n발표 제목은 'AI를 활용한 SI 기업의 10X 성과 달성 전략'이다. 중간발표의 질문을 그대로 이어받되, 이번에는 그룹 AX 전반보다 포스코DX 자신의 SI 업무를 AI로 어떻게 바꾸고 있는지에 초점을 맞췄다.",
+        quote: "SI 기업으로서 AI를 활용해 10X의 성과를 내야 한다는 것은 모든 기업의 고민일 것이라고 생각합니다. 지난 6개월 동안 이 질문에 대한 작은 결과를 말씀드리겠습니다."
+      },
+      {
+        title: "포스코DX: 공장과 경영, 두 세계를 모두 아는 SI",
+        text: "포스코DX는 고객의 업무에 맞춰 하드웨어, 소프트웨어, 네트워크를 하나의 정보 시스템으로 통합해 기획, 구축, 운영을 수행하는 SI 기업이다. 현장의 센서, PLC, DCS, 프로세스 제어부터 사무 영역의 MES와 ERP까지, 레벨 0에서 레벨 4 전체를 대상으로 IT와 OT를 종합적으로 다루는 회사는 SI 업계에서 유일하다고 발표자는 설명했다.\n최근 사업은 두 축으로 나뉜다. 공장의 AX를 실행하는 피지컬 AI, 그리고 사무의 AX를 지원하는 에이전틱 AI다. 포스코DX는 포스코그룹의 AI 실행 전략을 현장에서부터 경영까지 실제 기술로 구현하는 핵심 실행 주체라는 것이 발표자의 정의다.",
+        list: [
+          "<b>피지컬 AI</b>, 공장 현장의 AX를 실행",
+          "<b>에이전틱 AI</b>, 사무·경영 영역의 AX를 지원",
+          "<b>레벨 0~4 전 계층</b>, IT와 OT를 함께 다루는 SI 업계 유일의 기업"
+        ]
+      },
+      {
+        title: "위기의식: J커브의 변곡점과 무너지는 SI 수익 공식",
+        text: "발표자는 AI 생산성이 J커브의 바닥을 지나 가파른 상승으로 꺾이는 변곡점에 와 있다고 봤다. AI와 함께 일하는 문화를 만들고 업무를 잘 재설계하는 기업은 J커브를 타고 성장하고, 그렇지 못한 기업은 도태된다. 생산성의 대폭발은 예고된 미래가 아니라 이미 현재의 일이며, AX는 거부할 대상이 아니라 반드시 받아들여 혁신으로 가져가야 하는 것이라고 했다.\nSI 업에는 고유한 고민이 있다. 생성형 AI가 등장하면서 '인력 × 단가'라는 수익 공식이 무너지고 있고, 생산성을 높일수록 매출은 오히려 줄어드는 구조다. SI 업체를 통해 시스템을 만들던 고객의 방식도 달라지고 있으며, 경쟁자는 동종 SI 기업이 아니라 빅테크와 AI 모델 기업이다. 그래서 포스코DX는 일하는 방식을 완전히 AI로 혁신하는 AI 네이티브 기업으로 거듭나려 하고 있다.",
+        list: [
+          "<b>수익 공식 붕괴</b>, 생성형 AI 등장으로 '인력 × 단가' 모델이 흔들린다",
+          "<b>생산성의 역설</b>, 생산성을 높일수록 매출이 줄어드는 구조",
+          "<b>고객의 변화</b>, SI 업체를 거쳐 시스템을 만들던 방식이 바뀌고 있다",
+          "<b>경쟁 구도</b>, 경쟁자는 동종 SI가 아니라 빅테크와 AI 모델 기업"
+        ]
+      },
+      {
+        title: "SI 라이프사이클 재설계: 제안·구축·운영을 AI와 함께",
+        text: "포스코DX의 사업은 제안, 구축, 운영의 사이클로 이루어진다. 발표자는 이 세 단계 각각에서 AI와 함께 일하는 방식을 설계했다. 제안 단계에서는 수주·실주 사유처럼 암묵지로 남아 있던 판단과 원가 산정 기준을 명확히 세운다. 주력인 구축 단계에서는 분석, 설계, 제작, 테스트, 이행에 이르는 반복 업무를 규칙화하고 설계 패턴과 레거시 지식을 지식화한다. 운영 단계에서는 베테랑 장애 전문가의 암묵지에 의존하던 방식을 AI와 함께하는 체계로 바꾼다.",
+        table: {
+          head: ["단계", "기존 방식의 한계", "AI와 함께 일하는 방식"],
+          rows: [
+            ["제안", "수주·실주 사유와 원가 산정이 암묵지에 머묾", "판단 근거와 원가 산정 기준을 명확히 하고, 추진계획서 초안을 에이전트가 작성"],
+            ["구축", "분석·설계·제작·테스트·이행의 반복 업무", "반복 업무 규칙화, 설계 패턴·레거시 지식의 지식화, ACE 플랫폼의 단계별 에이전트"],
+            ["운영", "베테랑 장애 전문가의 암묵지에 의존", "AI가 감시·분석·반복 처리, 운영자는 판단·승인·개선에 집중"]
+          ]
+        }
+      },
+      {
+        title: "제안 단계: 70일 걸리던 추진계획서를 7일로",
+        text: "포스코 같은 고객사의 요청이 오면 PM을 선정하고, 업무 요건을 분석하고, 추진계획서를 작성하고, 기술과 프로세스를 검토하는 일련의 과정이 현재 70일 정도 걸린다. 발표자는 AI와 함께 일함으로써 이 과정을 단계별로 쪼개 7일 안에 끝내, 10배의 생산성을 내는 것을 목표로 잡았다. 중간발표 때 'AI를 적용해 70일 걸리던 일을 7일 안에 끝내 보자'고 했던 목표를 단계별 소요 기간으로 구체화한 것이다.",
+        flow: [
+          { t: "PM 선정", s: "0.5일" },
+          { t: "업무 요건 분석", s: "1일" },
+          { t: "추진계획서 작성", s: "2.5일 이내" },
+          { t: "기술 검토", s: "2일 이내" },
+          { t: "프로세스 검토", s: "1일 이내, 합계 7일 (기존 약 70일)" }
+        ]
+      },
+      {
+        title: "제안 에이전트: 한 장의 요청에서 31장의 초안까지",
+        text: "실제 사례로 과정 과제로 만든 제안 에이전트를 소개했다. 추진계획서 작성에 가장 많은 시간이 들어가는데, 에이전트가 견적 정보와 도메인 정보를 활용해 계획을 생성하고 빈 부분을 채워, 한 장 분량의 요청에서 31장 분량의 추진계획서 초안을 만들어 낸다. 작업자들이 초안을 만드는 수고를 AI가 높은 수준으로 대신할 수 있다는 것을 검증하고 있고, 실제 시연도 했다. 부서 간 협업으로 이루어지는 검토 과정도 이 흐름 안에 들어간다.\n에이전트에는 이름을 붙였다. 상위 에이전트 아래에 요구사항을 분석하는 서브 에이전트, 추진계획서를 작성하는 에이전트, 견적과 기술 검토를 담당하는 에이전트가 있다. 이 일하는 모습을 PM들을 대상으로 한 설명회로 공유하며 내부 변화 관리를 함께 진행하고 있다.",
+        facts: [
+          { num: "70일 → 7일", label: "제안 단계 추진계획서 작성 과정의 목표 리드타임" },
+          { num: "10배", label: "제안 단계에서 노리는 생산성 향상" },
+          { num: "31장", label: "한 장 분량의 요청에서 에이전트가 만드는 추진계획서 초안" }
+        ]
+      },
+      {
+        title: "구축 단계: ACE 플랫폼과 16개의 에이전트",
+        text: "구축은 포스코DX 업무의 대부분을 차지하는 영역으로, 분석, 설계, 제작, 테스트, 이행으로 진행된다. 여기서 AI는 초안을 작성하고, 사람은 요건을 확정하고 아키텍처를 결정하고 코드와 품질을 승인하고 오픈을 결정하는, 가치 있는 일에 집중한다. 그동안 사람이 단순 반복적으로 하던 일은 AI에게 맡긴다. 그 결과로 기대하는 것은 끊임없는 산출물의 흐름, 누가 수행하든 같은 품질이 나오는 품질의 상향 표준화, 그리고 판단과 고객에 집중하는 사람이다.\n이를 위해 AI 협업 소프트웨어 엔지니어링 플랫폼인 ACE 플랫폼 위에 분석, 설계, 제작, 테스트 단계별로 16개의 에이전트를 만들고 있다. 개발자와 AI가 긴밀히 협업하는 환경을 제공하고, 생산성을 계속 측정하며 실제 성과를 검증해 나가고 있다.",
+        facts: [
+          { num: "16개", label: "ACE 플랫폼에서 만들고 있는 구축 단계 에이전트" }
+        ]
+      },
+      {
+        title: "운영 단계: AI는 감시하고, 사람은 판단한다",
+        text: "운영은 구축된 시스템을 상시 모니터링하고, 장애에 대응하고, SR(서비스 요청)을 처리하고, 개선하고, 운영을 지식화하는 단계다. 사내 해커톤 등으로 각 영역의 혁신 과제를 진행하며, 상시 모니터링부터 운영 지식화까지 AI와 함께하는 체계를 만들고 있다. AI는 감시, 분석, 반복 처리를 맡고 운영자는 판단, 승인, 개선에 집중한다. 전체적으로 운영 리드타임을 30~50% 줄이는 것이 목표다.\n개발자들이 스스로 바이브 코딩으로 현업의 요청을 빠르게 구현해 고객 피드백 시간을 획기적으로 줄이는 시도도 하고 있다. 발표자는 개발자들이 직접 써 보면서 긍정적으로 받아들이고 있고, 실험하는 직원들이 사례를 공유하며 서로 공감하는 문화가 생기고 있다고 전했다.",
+        facts: [
+          { num: "30~50%", label: "운영 단계 리드타임 감축 목표" }
+        ]
+      },
+      {
+        title: "중간발표 이후: 그룹 AX 청사진에서 우리 업무의 실제 에이전트로",
+        text: "중간발표에서 발표자는 그룹 AX 실행 주체로서 프로세스·지식·플랫폼·실행·사람의 5대 핵심기술을 사업모델로 묶는 청사진을 제시했다. 당시 심사위원들은 어떤 문제를 푸는지 명확히 하고 효과를 검증하라고 했고, 포스코DX가 워크플로우 재설계와 암묵지의 형식지화 두 가지만 해내도 큰 성공이 될 것이라고 조언했다.\n최종발표는 그 조언에 맞춰 범위를 좁혔다. 포스코DX 자신의 SI 라이프사이클을 제안·구축·운영으로 나눠 AI와 함께 일하는 업무로 재설계했고, 70일을 7일로 줄이겠다던 목표는 단계별 소요 기간과 실제 제안 에이전트로 구체화됐다. 발표자는 중간발표 때 받은 지적이 크게 부담이 됐다고 털어놓으며, 향후 계획의 첫 두 축을 바로 그 업무 재설계와 암묵지 자산화로 잡았다.",
+        table: {
+          head: ["구분", "중간발표 (계획)", "최종발표 (실행)"],
+          rows: [
+            ["범위", "그룹 AX 실행을 위한 5대 핵심기술의 사업모델화", "포스코DX 자체 SI 업무(제안·구축·운영)의 재설계"],
+            ["제안 리드타임", "70일 걸리던 일을 7일 안에, 에이전트 제작 중", "PM 선정 0.5일부터 프로세스 검토 1일까지 단계별 7일 설계, 31장 초안 생성 에이전트 검증·시연"],
+            ["구축·운영", "그룹 표준 에이전트 플랫폼 구상", "ACE 플랫폼 16개 에이전트, 운영 리드타임 30~50% 감축 목표, 바이브 코딩 실험"],
+            ["심사위원 조언 반영", "워크플로우 재설계와 암묵지 형식지화에 집중하라", "향후 계획의 핵심 축을 업무 재설계 · 암묵지 자산화 · 맥락화로 설정"]
+          ]
+        }
+      },
+      {
+        title: "AI Native Company와 향후 계획: 재설계, 자산화, 맥락화",
+        text: "발표자는 AI를 단순히 도입하는 것이 아니라 AI를 전제로 전체 업무를 설계하는 AI Native Company로의 전환을 목표로 삼았다. 개인적으로 세운 목표점은 셋이다. 생산성 향상, 이를 통한 사업모델 확대와 매출 증대, 그리고 높은 품질의 피드백으로 고객 신뢰를 얻어 단가를 올릴 기회를 만드는 것이다.\n향후 계획은 세 축이다. 첫째, 업무 재설계를 포스코DX 내부에 그치지 않고 회계 업무 같은 고객의 업무로 넓혀, 고객도 AI를 전제로 일하도록 돕는다. 둘째, 비정형 문서로 흩어진 지식을 형식지화하고, 문서로도 남지 않는 개인의 내재화된 기술력까지 자산화한다. 셋째, 온톨로지 등으로 데이터에 담긴 맥락과 의미를 해석해 더 수준 높은 비즈니스 혁신을 이루는 맥락화다. 발표자는 AI 생산성이 대폭발의 초입에 있다며, ABC 과정에서 얻은 배움을 포스코DX 현장에서 AI와 함께 일하는 방식으로 실천하겠다고 맺었다.",
+        list: [
+          "<b>업무 재설계</b>, 포스코DX 내부를 넘어 고객의 업무까지 AI를 전제로 재설계",
+          "<b>암묵지 자산화</b>, 비정형 지식의 형식지화와 개인에게 내재화된 기술력의 자산화",
+          "<b>맥락화</b>, 온톨로지 등으로 데이터의 맥락과 의미를 해석해 비즈니스 혁신으로 연결"
+        ]
+      },
+      {
+        title: "질의응답: 레거시, 사람, 그리고 다음 세대",
+        text: "질의응답은 기술의 한계와 조직의 저항 두 갈래로 이어졌다. 심사위원 1은 RAG로 암묵지를 쌓을 때의 정보 손실, 계속 늘어나는 데이터의 관리, AI가 약한 레거시 코드 수정을 차례로 물었다. 발표자는 ECM 문서를 AI가 쓸 수 있는 데이터 체계로 전환하고 현장 명장들의 작업을 영상과 인터뷰로 담는 시도를 소개했고, 코드가 80~90% 변환돼도 나머지 10~20%의 정확도를 높이는 데 개발자 노력의 대부분이 들어간다며 시나리오별 테스트와 테스트 기간 확보가 필요하다고 답했다.\n수강생들은 변화 관리와 채용을 물었다. 발표자는 '내가 제일 잘하기 때문에 더 바뀔 게 없다'고 생각하는 개발자가 많아 기존 업무를 절반으로 줄이고 AI와 함께하는 시도를 직접 경험하게 한다고 했다. 고객의 업무를 함께 고민하는 FDE형 역할로의 전환도 언급했다. 반면 신규 인력을 뽑을 여지가 줄어드는 문제에는 답이 없다며, 젊은 세대가 경험을 쌓을 길은 국가적으로 고민해야 할 문제라고 했다. 심사위원 3은 DX 조직이 AX에 가장 반대한다는 점을 짚으며, 원로들을 명예롭게 은퇴시키고 젊은 세대가 변화를 이끌게 한 덩샤오핑의 방식을 참고하라고 조언했다.",
+        quote: "내가 제일 잘하기 때문에 더 바뀔 게 없다고 생각하는 개발자들이 많습니다. 그래서 기존에 하던 업무를 반으로 줄이고, AI와 함께 일하는 사례를 직접 경험하도록 계속 이야기하고 있습니다."
+      }
+    ],
+    qna: [
+      {
+        q: "암묵지를 RAG 등으로 축적한다고 했는데, 처음 암묵지를 축적할 때 원래 지식의 정보량이 모두 담기지는 않을 것이다. 이 문제를 해결할 전략이 있나?",
+        a: "포스코 같은 주요 고객사에는 ECM에 보고 자료와 문서가 많이 쌓여 있지만 실제로 활용할 수 있는 지식으로 되어 있지는 않다. 이를 AI-Ready 데이터 체계로 전환하는 작업을 비정형 문서부터 진행하고 있다. 현장 명장들의 노하우는 일하는 모습을 영상으로 찍어 포인트를 찾거나 공정별 노하우를 인터뷰로 축적하는 등 여러 실험을 하고 있다. 쉽지 않은 일이다."
+      },
+      {
+        q: "원본과 함께 RAG로 임베딩해 저장하면 데이터가 계속 쌓여 결국 감당하기 어려워질 텐데, 이에 대한 대응 계획이 있나?",
+        a: "지금은 정형·비정형 지식을 RAG화해 활용 체계를 만들고, 얼마나 정확한 답을 찾아내는지에 우선 집중하고 있다. RAG 데이터의 보안, 임베딩 토큰 비용, 늘어나는 내부 데이터의 효율적 관리와 실시간 동기화는 남은 숙제다. 말씀을 기록해 추가 대책을 마련하겠다."
+      },
+      {
+        q: "AI로 기존 코드를 수정·고도화한다고 했는데, 레거시 코드의 수정과 유지보수는 AI가 잘 못하는 영역으로 알려져 있다. 트러블슈팅도 어렵고 결과물이 틀리는 경우도 많은데 대응책이 있나?",
+        a: "비즈니스 변화 없이 A공장 시스템을 B공장에 적용하거나 옛 기술을 현대 기술로 바꾸는 리팩토링 케이스를 만들고 있다. 정확도가 낮거나 결함이 있을 수 있어 전환 후 시나리오별 테스트 케이스로 철저히 품질을 점검한다. AI가 80~90%를 변환해도 나머지 10~20%의 정확도를 높이는 데 개발자 노력의 80~90%가 든다. 그래서 작은 변화부터 시도하며 운영 효율을 측정하고 있고, 사이드 이펙트를 감안해 테스트 기간을 확보해야 한다."
+      },
+      {
+        q: "레거시를 다 버리고 처음부터 새로 짜는 것이 훨씬 빠르다는 의견도 많다. AI가 만든 버그를 해결하는 데 사람의 노력이 엄청나게 들어가고 있다는 것인가?",
+        a: "큰 이슈다. 예전에는 현업이 SI 담당자를 통해 시스템을 만들었지만 이제는 현업이 직접 만들고, 그 결과물을 운영으로 이관해 달라는 요청이 많다. 검증해 보면 다시 만드는 편이 나을 만큼 개인 의존성이 크다. 그래서 만들 때부터 스킬과 하네스 기준을 담은 가이드를 주고, 그 가이드를 지켜 만든 것이 운영으로 이관되도록 프로세스를 만들고 있다."
+      },
+      {
+        q: "서브 에이전트마다 이름을 붙여 활용하는 점이 인상 깊었다. AI 에이전트는 환각이 심해 난제를 풀 때 서브 에이전트를 크게 늘리기도 한다. 최근에는 컴퓨터 사용 에이전트 쪽의 혁신이 있는데, 프로그래머와 직원들이 컴퓨터를 쓰는 방식 자체에 암묵지가 있으니 에이전트가 그 사람의 특징까지 받아들이면 훨씬 역동적인 시스템이 될 수 있다. 맥락화 등 많은 대표님들이 고민하는 혁신을 보여준 모범적인 발표다.",
+        a: "답변 없이 코멘트로 마무리됐다."
+      },
+      {
+        q: "덩치가 큰 국내 대기업에서 AI 전환을 체계적으로 하는 것이 인상적이었다. AI 컬처가 조직에 확산되는 기업과 그렇지 못한 기업 간 생산성 격차는 시간이 갈수록 벌어질 것이다.",
+        a: "고객사 분이 6기에 계셔서 효율을 얼마나 높이겠다는 숫자는 직접 말하지 않았다고 웃으며 답했다. 효율을 높일수록 고객이 비용을 줄이겠다고 해 압박이 들어오는 것이 SI의 고민이라는 것이다."
+      },
+      {
+        q: "(수강생) SI 조직은 대부분 소프트웨어 엔지니어로 구성돼 있어, 장기적으로 본인들의 역할이 줄거나 없어질 수 있다는 걱정이 클 것이다. 변화 관리는 어떻게 하고 있나?",
+        a: "자신이 제일 잘한다고 생각해 바뀔 게 없다고 여기는 개발자가 많다. 리더가 바뀌어야 조직원이 바뀐다는 생각으로 직접 바이브 코딩 과제를 보여주며 솔선수범하고, 기존 업무를 절반으로 줄이고 AI와 함께하는 시도를 하라고 강조하고 있다. 그룹·사내·글로벌 빅테크와의 해커톤으로 직접 느끼게 하고, 고객의 업무를 함께 고민하는 FDE형 역할로 전환하며, 현업의 바이브 코딩 결과물을 빠르게 운영으로 이관하는 데 집중하고 있다. 답은 없는 것 같다."
+      },
+      {
+        q: "(수강생) AI가 일을 대신하면 대부분의 IT·SI 기업이 신규 인력을 뽑을 여지가 줄어든다. 여기 계신 분들의 자녀 중 컴퓨터를 전공하는 이들이 많은데 공통의 두려움이다.",
+        a: "큰 고민이다. 실제로 IT 부서가 현장 부서보다 채용을 하지 않고 있다. 젊은 세대가 어떻게 경험을 쌓게 할지는 국가적으로 고민해야 할 문제이고, 그룹과 회사도 다각적으로 고민해야 할 시점이다."
+      },
+      {
+        q: "(수강생) 기존 DX(IT) 부서와 새로 만들어진 AI 센터가 양립하는 경우, 둘을 합쳐야 하나, 아니면 어떤 방향으로 협업해야 하나?",
+        a: "AX를 선도하는 조직은 반드시 필요하다. 먼저 해 보이고 기술을 습득해 기존 부서에 지식을 이전해 줘야 하므로 양립해야 한다고 본다. 포스코DX에도 AI 센터와 로봇 센터가 있고, 기존 레거시 업무 조직과 인사이트 포럼, 특강, 사례 공유로 계속 소통하며 협업하고 있다. 정답이 아닐 수도 있다."
+      },
+      {
+        q: "(수강생) 다양한 에이전트를 활용하는데, 고객 정보 보안은 어떻게 하고 있나? 자체 LLM을 개발하는 부서가 따로 있나?",
+        a: "포스코와 포스코퓨처엠은 국가핵심기술을 다루므로, 관련 영역은 자체 데이터센터에 GPU를 도입하고 오픈 모델을 설치해 데이터 보안을 지킨다. 공개해도 되는 정보와 기밀 정보의 기준을 명확히 정리해, 공개 가능한 것은 클라우드로, 기밀이 중요한 것은 자체 데이터센터로 보낸다. 자체 LLM 개발 부서가 따로 있는 것은 아니고, 외부 모델을 내부에 설치해 비즈니스를 얹은 버티컬 LLM, 즉 공정의 특정 업무를 해결하는 LLM을 구축하고 있다."
+      },
+      {
+        q: "(수강생, 6기) 포스코는 대표 기업인데 에이전트 이름에 그리스 여신 이름을 썼다. 우리나라의 정겨운 이름을 붙여 볼 계획은 없나?",
+        a: "소프트웨어 엔지니어링 용어가 영어 중심이라 단계에 맞는 이름을 붙였다. 일단 이 에이전트 패밀리를 완성한 뒤 한국적인 이름을 지어 보자는 아이디어도 있어 시도해 보려 한다."
+      },
+      {
+        q: "앞선 송 대표님 발표와 마찬가지로, 아는 사람이 더 반대한다. DX 조직이 AX에 제일 반대한다. 덩샤오핑은 1세대 원로들이 반대하면 개혁이 불가능하다고 보고 그들이 명예롭게 은퇴하도록 배려했다. 'DX가 있었기에 지금 AX가 가능하다'고 계속 인정해 주고, 은퇴가 가까운 분들은 명예롭게 물러나게 하고 젊은 분들이 AX로 가는 분위기를 만드는 덩샤오핑의 방식을 많이 활용하라.",
+        a: "답변 없이 코멘트로 마무리됐다."
+      }
+    ]
+  },
+  {
+    no: 6,
+    name: "김홍구",
+    affil: "서울문고 · 대표",
+    topic: "서울문고 AI 전환 전략: 사람이 결정하고, AI가 검증한다",
+    summary: "반디앤루니스를 운영하는 서울문고가 손실 구조와 반디 US 의존이라는 실제 경영 문제를 놓고, 회사 상태 원장을 ChatGPT·클로드·키미 세 AI 경영 후보에게 블라인드로 주고 감사 AI가 공통의 맹점을 짚게 한 뒤 대표가 재결정하는 경영 실험으로, 반디 US의 로열티 전환 결정을 혼합 로열티와 실행 전 검증 게이트 두 개로 바꾼 과정.",
+    tags: ["서점·도서유통", "AI 경영 실험", "멀티 LLM 교차검증", "감사 AI", "의사결정 거버넌스"],
+    links: [
+      { label: "발표 슬라이드 (PDF)", url: "slides/06.pdf" },
+      { label: "속기록", url: "transcripts/06.html" },
+      { label: "중간발표", url: "https://kdtfintech.github.io/ABC_5_midterm/archive5.html#06" }
+    ],
+    highlights: [
+      "주요 4대 서점 매출 2조 1,682억 원에 영업이익 185억 원, 여러 신사업 아이디어에도 해법은 없었고 원장이 드러낸 것은 서울문고의 손실 구조와 해외 매장 반디 US에 대한 의존",
+      "AI에게 묻되 답을 맡기기 전에 검증 장치부터: 회사 상태 원장을 ChatGPT·클로드·키미 세 후보에게 블라인드로 주고, 제미나이 감사는 판정만, 결정은 대표, 예측은 실행 전에 원장에 고정",
+      "반디 US를 직영에서 고정 로열티로 바꾸려던 대표의 결정이 최소 보장+매출 연동 혼합 로열티, 축소 체제 시험 후 인력 결정, 게이트 A(데이터 대체 가능성)·B(축소 운영 가능성)로 재결정. 'AI의 성과는 정답이 아니라 결정의 순서와 조건을 바꾼 것'",
+      "심사위원: 시나리오에 넣는 정보와 제약에 따라 결과가 달라지니 반복 학습까지 시도해 볼 것, AI가 낸 새로운 제안을 판단할 기준이 필요하다는 우려, 사람이 네 번째 후보로 AI와 경쟁하는 구조 제안"
+    ],
+    scenes: [
+      {
+        title: "출발점: 중간발표의 대시보드에서 서울문고 자신으로",
+        text: "중간발표에서 발표자는 관계사 건설, 온양관광호텔, 서울문고, 경리아웃소싱 네 사업을 놓고 'AI 기반 경영의사결정 지원 시스템'을 폭넓게 설계했다. 당시 서울문고는 도서 판매 부진 속에 BM을 세우기 어렵다는 이유로 '다음으로' 미뤄 둔 사업이었고, 첫 PoC는 온양관광호텔의 엑셀 데이터를 읽어 A/B/C 선택지가 붙은 CEO 데일리 브리프를 만드는 것이었다. 심사위원들은 수치에 규칙을 적용하는 판단은 AI 없이도 된다며 고도화를 주문했다.\n최종발표는 범위를 좁혀 서울문고 자신의 AI 전환 전략으로 돌아왔다. 'AI는 근거와 선택지를 제시하고 최종 결정과 책임은 대표가 진다'는 중간발표의 원칙은 그대로 두되, 이를 대시보드가 아니라 실제 경영 문제에 대한 실험으로 옮겼다. 세 개의 AI 경영 후보와 하나의 감사 AI가 대표의 실제 결정을 검증하는 구조다. 발표자는 발표를 마치며 중간발표에서 최종발표로 방향이 바뀐 계기로 연구원의 가이드를 꼽았다.",
+        table: {
+          head: ["구분", "중간발표 (2026. 8. 27)", "최종발표 (2026. 10. 17)"],
+          rows: [
+            ["대상", "건설·호텔·서울문고·경리아웃소싱 네 사업, 서울문고는 '다음으로'", "서울문고(반디앤루니스) 자신"],
+            ["AI의 역할", "규칙 엔진·선택적 RAG로 이상신호와 A/B/C 선택지 제시", "AI 경영 후보 셋이 블라인드로 진단, 감사 AI가 맹점 판정"],
+            ["검증 대상", "온양관광호텔 F&B 매출 -31.9% 브리프", "반디 US 직영→로열티 전환이라는 대표의 실제 결정"],
+            ["사람의 역할", "CEO 최종 결정, Human-in-the-Loop", "대표가 결정·재결정, 예측 원장으로 사후 검증"]
+          ]
+        }
+      },
+      {
+        title: "문제: 해법 없는 아이디어들과 원장이 드러낸 손실 구조",
+        text: "서울문고는 반디앤루니스 브랜드로 여러 차례 경영 위기를 겪으며 새로운 경영 모델을 재구성하고 있다. 경영 모델 재설계와 사업 재편을 위해 오프라인·온라인 재개, 리노베이션, 브랜드 라이선싱, 도서 정보 데이터 활용, 신규 콘텐츠 개발, 독립 출판사·동네 책방 플랫폼, 자서전·추천 도서 챗봇까지 여러 아이디어가 나왔다. 검토해 본 것도, 준비 중인 것도 있지만 해법은 아직 없었다.\n사실을 드러낸 것은 회사 상태의 원장이었다. 원장이 보여준 것은 회사의 손실 구조와 해외 직영 매장인 반디 US에 대한 의존이었고, 어떤 신사업이라도 이 손실 구조를 해결하지 않으면 소용이 없다는 것이 출발점이 됐다. 시장 환경도 녹록지 않다. 2025년 기준 주요 4대 서점의 매출은 2조 1,682억 원이었지만 영업이익은 1%에도 못 미치는 185억 원이었다. 작년에는 북스리브로가 파산했고, 교보문고도 2023년 360억 원, 2024년 122억 원의 적자를 겪었다. 발표자는 같은 방식을 반복하는 것은 낭비이고 판단 자원은 부족하다고 진단했다.",
+        facts: [
+          { num: "2조 1,682억 원", label: "2025년 기준 주요 4대 서점 매출" },
+          { num: "185억 원", label: "같은 기준 영업이익, 매출의 1%에도 못 미침" }
+        ]
+      },
+      {
+        title: "실험의 질문: AI를 얼마나 믿을 수 있는가",
+        text: "발표자는 이번 발표를 실제 경영 문제를 대상으로 AI의 답과 경영자의 판단을 함께 검토하고 검증하는 '경영 실험'이라고 규정했다. AI가 경영 제안을 내놓았을 때 시행 전에 무엇을 확인해야 하는가. CEO에게 AI는 더 빠르고 저렴한 도구이기 전에 얼마나 믿을 수 있는가의 문제라는 것이다. 그래서 회사의 생존이 걸린 확인 절차를 설계하고 적용해 봤다.\nAI를 쓰는 방식은 세 갈래로 나눴다. 모두 맡기는 과신, 챗봇 몇 개를 붙여 도구로만 쓰는 과소 활용, 그리고 제안을 믿기 전에 검증하는 구조를 만드는 검증. 이번 실험은 세 번째를 택했고, 여러 AI의 답을 나란히 비교하는 데서 멈추지 않고 여러 AI가 함께 틀릴 가능성까지 검증하려 했다. 검증은 진단, 재검토, 예측의 순서로 설계했다.",
+        quote: "CEO에게 AI는 더 빠르고 저렴한 도구이기 전에, 얼마나 믿을 수 있는가의 문제입니다."
+      },
+      {
+        title: "실험 설계: 다섯 가지 검증 장치",
+        text: "AI에게 묻되 답을 맡기기 전에 검증 장치부터 마련했다. 핵심은 제안하는 주체와 결정하는 주체를 나누고, 모두가 같은 사실을 보게 하며, 결과로 사후에 대조할 수 있게 만드는 것이다. 실행 순서에 대한 원칙도 세웠다. 되돌릴 수 없는 결정은 검증 전에 하지 않는다.",
+        list: [
+          "<b>제안과 집행의 분리</b>, AI는 제안하고 대표는 결정한다",
+          "<b>회사 상태 원장</b>, 모두가 같은 사실을 보도록 매출 실적·현황·규칙을 하나의 원장으로",
+          "<b>출처와 독립성 규칙</b>, 숫자에는 출처를 달고 대표의 생각에 맞추지 않는다",
+          "<b>감사 AI</b>, 후보들의 의견을 판정하되 자기 의견은 내지 않는다",
+          "<b>예측 원장</b>, 실행 전에 예측을 기록해 고정하고 실제 값과 대조한다"
+        ]
+      },
+      {
+        title: "작동 구조: 블라인드 세 후보, 감사, 그리고 대표",
+        text: "회사의 매출 실적과 현황, 실험이 돌아가는 규칙을 모두 원장으로 만들고, 이를 AI 경영 후보 셋에게 블라인드로 같은 자료와 임무로 부여했다. 후보는 ChatGPT, 클로드, 키미이며 서로의 답을 보지 못한다. 서로 다른 관점의 의견이 나오게 하기 위해서다. 모인 의견은 감사 역할의 제미나이가 판정하되 감사는 자기 의견을 내지 않는다. 최종 결정은 대표인 발표자가 맡고, 예측 원장에 예측을 고정해 실제 결과와 대조한다.\n질의응답에서 원장의 내용도 드러났다. 지난 3년간의 매출 실적, 운영 조직 구조, 인력 현황, 회사가 가려는 방향에 대해 그동안 검토한 내용을 넣었고, 서로 답을 공유하지 않도록 하는 것을 포함해 규칙 6가지 정도를 함께 제공했다.",
+        flow: [
+          { t: "회사 상태 원장", s: "3년 매출 실적, 조직·인력, 방향, 규칙 약 6가지" },
+          { t: "AI 경영 후보 3", s: "ChatGPT · 클로드 · 키미, 블라인드로 같은 자료와 임무" },
+          { t: "감사 AI", s: "제미나이, 판정만 하고 의견은 내지 않음" },
+          { t: "대표 결정", s: "수정안 수용, 맹점은 실행 전 게이트로" },
+          { t: "예측 원장", s: "예측을 사전에 고정, 실제 결과와 대조" }
+        ]
+      },
+      {
+        title: "1라운드: 공통 진단과 대표의 로열티 전환",
+        text: "세 후보의 진단에는 서로 다른 의견도 많았다. 발표자는 세부 진단이 모두 같았다면 오히려 의심했을 것이라고 했다. 공통된 진단은 세 가지였다. 적자 구조를 먼저 해소할 것, 반디 US의 재고와 환율 부담이 큰 직영 판매를 줄일 것, 반디 US의 인력 효율과 브랜드·데이터 활용 가능성을 검토할 것.\n대표는 판매 부진과 해외 부담을 고려해 적자 구조 개선과 재고·환율·인력 부담 축소가 우선이라고 봤다. 판매의 중심인 반디 US의 판매 부진과 해외 직영 운영의 한계를 감안해, 반디 US를 직영에서 로열티 방식으로 전환하기로 했다. 현지 운영 주체가 판매 운영을 맡고 서울문고는 브랜드와 도서 정보 데이터를 라이선스로 제공해 고정 로열티를 받는 구조다. 발표자는 이 로열티 전환이 AI가 찾아낸 것이 아니라 자신이 내린 결정이라고 분명히 했다.",
+        list: [
+          "<b>공통 진단 1</b>, 적자 구조를 먼저 해소하라",
+          "<b>공통 진단 2</b>, 반디 US의 재고·환율 부담이 있는 직영 판매를 줄여라",
+          "<b>공통 진단 3</b>, 반디 US의 인력 효율과 브랜드·데이터 활용 가능성을 검토하라",
+          "<b>대표 결정</b>, 반디 US를 직영에서 고정 로열티 구조로 전환"
+        ]
+      },
+      {
+        title: "2라운드: 세 후보의 공통 수정안",
+        text: "대표의 결정을 다시 후보들에게 넘기자, 서로의 답을 보지 못한 세 후보가 같은 수정안 두 가지를 내놓았다. 첫째는 로열티 지급 방식의 보완이다. 매출이 줄면 매출 대비 로열티 부담률이 커지는데 고정 로열티는 부담스럽지 않겠느냐는 지적으로, 최소 보장 로열티에 매출 실적 연동분을 더한 혼합 구조를 제안했다. 둘째는 인력 축소 전 운영 방식 검증이다. 사람을 먼저 내보내면 데이터 공급에 필요한 업무 경험과 노하우가 사라질 수 있으니, 업무와 지식을 확인하고 축소 운영 가능성을 검증한 뒤 인력을 조정하라는 것이다.",
+        list: [
+          "<b>로열티 방식 보완</b>, 고정 로열티 대신 최소 보장 + 매출 실적 연동의 혼합 구조",
+          "<b>인력 축소 전 운영 검증</b>, 업무와 지식을 확인하고 축소 운영 가능성을 검증한 뒤 인력 조정"
+        ]
+      },
+      {
+        title: "감사 AI: 같은 의견은 같은 맹점의 신호일 수 있다",
+        text: "대표는 최종 결론을 감사에게 다시 넘겼다. 감사의 판정은 세 후보의 공통 의견이 오염의 증거는 아니지만, 세 후보가 같은 맹점을 갖고 있다는 신호일 수 있다는 것이었다. 첫째, 세 후보 모두 반디 US가 아닌 다른 곳에서 같은 정보를 얻기 어렵다고 가정했지만 이는 검증되지 않았다. 이것이 데이터 공급의 대체 가능성을 따지는 게이트 A가 됐다. 둘째, 현재 반디 US 지원 업무를 축소된 인력으로 차질 없이 해낼 수 있는지도 검증되지 않았다. 이것이 축소 운영의 업무 수행 가능성을 보는 게이트 B다.\n감사 의견 역시 검증 대상이므로 두 맹점은 결론이 아니라 실행 전 검증 조건으로 반영했다. 게이트를 통과하지 못하면 진행하지 않는다.",
+        quote: "공통 의견은 오염의 증거가 아니라, 세 후보가 같은 맹점을 갖고 있다는 신호일 수 있습니다."
+      },
+      {
+        title: "재결정: AI가 바꾼 것은 정답이 아니라 순서와 조건",
+        text: "대표는 AI 후보의 두 수정안을 수용하고, 감사가 지목한 두 맹점은 실행 전 게이트로 걸었다. 고정 로열티는 혼합 로열티로, 인력 축소를 먼저 하던 순서는 축소 체제를 시험한 뒤 인력을 결정하는 순서로 바뀌었다. 경험으로 판단하던 데이터 경쟁력과 검증하지 않았던 축소 운영 가능성은 각각 게이트가 됐다. 발표자는 이 과정을 'AI의 성과는 정답이 아니라 대표 결정의 순서와 조건을 바꾼 것이며, 모든 결정과 책임은 여전히 대표가 진다'고 정리했다.",
+        table: {
+          head: ["항목", "AI 검증 전 대표 원안", "검증 후 재결정"],
+          rows: [
+            ["로열티", "고정 로열티", "최소 보장 + 매출 연동 혼합"],
+            ["인력", "인력 축소 먼저 검토", "축소 체제 시험 후 인력 결정"],
+            ["데이터 경쟁력", "경험으로 판단", "대체 가능성 검증 (게이트 A)"],
+            ["축소 운영 가능성", "사전 미검증", "예측을 실행 전에 고정하고 결과와 대조 (게이트 B)"]
+          ]
+        }
+      },
+      {
+        title: "검증 진행 현황: 게이트 A·B와 예측 원장",
+        text: "게이트 A의 대체 가능성은 현재로서는 낮다고 봤다. 해외에서 매장을 두고 도서 주문을 받는 곳은 반디 US가 사실상 유일하고, 메이저 서점들도 해외 배송 서비스로 주문과 배송은 가능하지만 배송비가 상당히 높아 단기에는 대체되기 어렵다는 예상이다. 게이트 B는 인력 축소가 조심스럽게 검토되는 사안이라 실제 결과는 아직 확인하지 않고 예측 원장만 마련했다. 지표는 축소된 인력의 주간 업데이트 준수율, 갱신 리드타임, 주당 1인 투입 시간이며, 대표와 AI 경영 후보 3인의 예측치를 사전에 기록해 실제 결과와 비교한다.\n발표 시점까지 제안, 재검토, 대표 판단, 설계 수용은 끝났고 예측 원장은 고정됐다. 게이트 A·B 검증은 진행 중이며, 계약 집행과 인력 조정 여부는 그 이후에 결정한다. 실험의 결과는 실제 운영이 시작된 뒤에야 확인된다. 검증을 통과하기 전에 되돌리기 어려운 결정은 실행하지 않는다는 원칙 그대로다.",
+        flow: [
+          { t: "제안 · 재검토", s: "세 후보 진단과 공통 수정안, 감사 판정 (완료)" },
+          { t: "대표 판단 · 설계 수용", s: "혼합 로열티, 인력 결정 순서 변경 (완료)" },
+          { t: "예측 원장 고정", s: "대표와 AI 3인의 사전 예측 기록 (완료)" },
+          { t: "게이트 A · B 검증", s: "데이터 대체 가능성, 축소 운영 가능성 (진행 중)" },
+          { t: "집행", s: "계약 집행과 인력 조정 여부 결정 (예정)" }
+        ]
+      },
+      {
+        title: "로열티 구조와 로드맵: 쌓아 두기만 한 데이터를 다시 보다",
+        text: "로열티 구조는 서울문고가 가진 상표권과 도서 정보 데이터를 반디 US에 제공하고, 반디 US가 그 브랜드와 데이터로 해외에서 판매한 대금에서 기본 로열티와 매출 연동 로열티를 지급하는 순환이다. 브랜드 가치, 데이터의 최신성, 현지 운영 능력, 판매 정보의 정확성 중 하나라도 무너지면 수익은 멈춘다. 그래서 검증 없이는 집행하지 않는다.\n로드맵은 실험의 검증 결과를 전제로 한 조건부 실행이다. 올해는 운영 체제 검증, 전산 정보 자동화, 인력 재교육을 진행하고, 2027년에는 로열티 구조가 안정되면 수익 구조를 전환한다. 발표자는 ABC 과정에서 가장 크게 깨달은 것이 AI 방법론보다 데이터의 수집·정리·활용이었다고 했다. 회사가 어려움을 겪으며 멈춰 있지만 비활성화된 회원이 약 50만 명이고, 재고 조사와 판매 실적, 해외 교포와 해외 고객이 요청한 도서 장르 데이터도 상당량 쌓여 있다. 이 데이터를 사업화하고 거래처를 넓혀 2028년 이후 확대하는 구조로 가며, 반디 US 지원 조직 일부를 정보화·데이터 조직으로 바꿔 AI 운영팀을 꾸릴 계획이다.",
+        flow: [
+          { t: "2026 · 검증", s: "운영 체제 검증, 전산 정보 자동화, 인력 재교육" },
+          { t: "2027 · 전환", s: "로열티 구조 안정 후 수익 구조 전환" },
+          { t: "2028 이후 · 확대", s: "회원·판매·해외 장르 데이터 사업화, 거래처 확장" }
+        ]
+      },
+      {
+        title: "AI 전환 Before/After: 사업 구조와 의사결정 구조를 함께 바꾸다",
+        text: "발표자는 서울문고의 AI 전환을 두 가지 변화로 요약했다. 사업 구조는 재고와 환율 부담을 지는 직영 판매에서 브랜드 라이선스로, 수익은 판매에서 데이터 공급과 로열티로, 조직은 반디 US 운영 지원에서 데이터·AI 운영 조직으로 바뀐다. 의사결정 구조는 대표의 경험과 직관에서 원장, 블라인드 후보, 감사, 대표 결정의 흐름으로 바뀌었고 이미 1회전을 마쳤다. 바뀌지 않는 것은 결정과 책임이 대표에게 있다는 것, 상표권이 여전히 서울문고에 있다는 것이다.\n이 실험은 대표의 경험과 직관에 의존하는 결정이 많은 기업, 한 번 결정하면 되돌리기 어려운 기업, 대표에게 반대 의견을 낼 사람이 부족한 기업에 맞는다. 반대로 즉시 대응이 필요한 결정, AI 판단에 법적 책임을 맡길 수 없는 결정, 대표가 결론을 정해 두고 동의만 원하는 경우에는 맞지 않는다. 회사가 경쟁력을 회복하면 최선이지만 그렇지 않더라도 이 기록은 회사만의 자산으로 남는다. 발표는 'AI가 검토하고, 사람이 결정하며, 결과로 검증한다'는 문장으로 끝났다.",
+        table: {
+          head: ["구분", "Before", "After"],
+          rows: [
+            ["사업 모델", "직영 판매, 재고·환율 부담", "브랜드 라이선스"],
+            ["수익", "판매", "데이터 공급과 로열티"],
+            ["조직", "반디 US 운영 지원", "데이터·AI 운영 조직"],
+            ["의사결정", "대표의 경험과 직관", "원장 → 블라인드 후보 → 감사 → 대표 결정 (1회전 완료)"]
+          ]
+        }
+      }
+    ],
+    qna: [
+      {
+        q: "경영 실험은 에이전트 AI 시뮬레이션으로 요즘 크게 대두되는 방향이고, 여러 전략 시나리오를 대조해 최종 제안까지 할 수 있지만 결국 선택은 사람이 한다. 이 시나리오에는 어떤 정보가 들어가나?",
+        a: "서로의 답을 볼 수 없는 블라인드 형태로 돌렸고, 가장 중요한 것은 회사 원장이다. 3년간의 매출 실적, 운영 조직 구조, 인력, 회사가 가려는 방향에 대해 검토했던 내용을 넣고, 서로 공유하지 않도록 하는 것 등 규칙 6가지 정도를 함께 제공했다. 화면으로 실제 블라인드 제공 자료와 규칙, 감사에게는 따로 의견을 내지 말라고 한 규칙을 보여 줬다.\n심사위원은 어떤 정보와 제약을 넣고 빼느냐에 따라 결과가 달라지니 그 부분을 더 고려하라고 조언했다."
+      },
+      {
+        q: "세 시나리오를 보면 타당한지, 그럴듯한지, 무언가를 못 찾고 있는지가 보인다. 그것을 바탕으로 시나리오 자체를 학습시키며 반복(iteration)해 본 경험이 있나?",
+        a: "가능한 한 가장 높은 모델을 고르려 했고, 두 차례의 경영 위기를 겪고 재설계가 필요하다는 회사의 현실과 내부 검토 내용을 먼저 넣어 돌렸다. 이번에는 몇백만 원도 들이지 않고 두 달간 모델을 썼는데, 작년에 회사 재편을 위해 1억 원 정도를 주고 맡긴 용역은 실용성이 크지 않았다는 경험을 공유했다. 반복 학습을 해 봤는지에 대한 직접적인 답은 없었다."
+      },
+      {
+        q: "전체 구조에서 대표의 판단이 거의 전지전능한 위치에 있어야 할 것 같다. 잘 아는 기존 모델의 재설계라면 판단할 수 있겠지만, AI가 혁신을 위한 새로운 의견을 냈을 때 현실성과 사업성은 무엇을 근거로 판단하나? 공학에서도 대학원생들이 연구 문제부터 GPT에 묻고 판단 없이 받아들이는 cognitive surrender가 우려된다.",
+        a: "경영자의 경험과 직관이 중요하다는 것은 존중하지만, 많은 오너가 과거의 성공 경험과 직관으로 결정하는 것을 금융기관 심사 부서 시절부터 봐 왔다. 회사 정보, 실적, 재무 지표 같은 객관적 데이터가 많으니 수치로 보는 부분이 많고, 정성적인 부분도 있지만 기본적으로 정량적으로 비교한다고 답했다. 처음 보는 제안을 판단할 기준에 대한 심사위원의 후속 질문에는 별도 답변 없이 다음 심사위원으로 넘어갔다."
+      },
+      {
+        q: "회사가 어려운 중에도 한 번도 결석하지 않은 데 감동했다. 원장에 공개할 정보, 의견을 내는 룰, 감사 의견의 방식은 사람이 정하고 그 외에는 AI와 사람의 관계가 순차적이다. 인력이 허용하면 같은 룰 아래 사람이 네 번째 후보로 들어가, 의견 제안 단계부터 사람과 AI가 레이스하는 구조도 고려해 보면 어떨까.",
+        a: "감사하다며 실험해 보겠다고 답했다."
+      }
+    ]
+  },
+  {
+    no: 7,
+    name: "노희열",
+    affil: "오로라월드 · 회장",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 8,
+    name: "문종목",
+    affil: "SBS M&C · 영업본부장",
+    topic: "방송광고, AI로 다시 짜다: 예측하고, 실적으로 확인하고, 다시 고칩니다",
+    summary: "시청률 예측이 맞지 않아 멈춰 있던 SBS M&C의 청약 시스템 스마트 메소디아를 되살리기 위해, 마스킹한 최근 3개월 닐슨 데이터와 사람이 넣는 보정 계수로 클로드와 함께 예측 모델을 다시 만들고, 유튜브 채널 믹스와 제안서·결과 보고서를 자동 생성하는 플래닝 대시보드까지 시제품으로 선보인 발표.",
+    tags: ["방송광고·미디어렙", "시청률 예측", "보정 계수", "제안서 자동화", "CPM 통합 지표"],
+    links: [
+      { label: "발표 슬라이드 (PDF)", url: "slides/08.pdf" },
+      { label: "속기록", url: "transcripts/08.html" },
+      { label: "중간발표", url: "https://kdtfintech.github.io/ABC_5_midterm/archive5.html#08" }
+    ],
+    highlights: [
+      "코로나 이후 시청률이 60% 정도 떨어지고 광고는 더 크게 줄어 작년 약 20억 원의 영업적자. 인력이 100명에서 80명으로 줄어드는 가운데 효율화를 위해 만든 스마트 메소디아가 시청률 예측이 맞지 않아 멈춰 있는 것이 출발점",
+      "해법: 닐슨 데이터를 마스킹해 클로드와 최근 3개월 기준 예측 모델을 새로 만들고, 계절·날씨·명절처럼 예측할 수 없는 요인은 사람이 보정 계수로, 신규·재방·특집 프로그램은 수작업 입력으로 채우는 구조",
+      "9월 비교에서 중간발표 때의 단순 평균보다 새 모델이 개선됐고, 12월까지 주간 단위로 다듬어 파이썬으로 메소디아에 접목할 계획. 유튜브 50개 채널 믹스와 제안서 7장·결과 보고서 4장을 자동 생성하는 대시보드도 시제품으로 공개",
+      "심사위원: 드라마의 맥락을 수치화하고 가상 시청자 페르소나 분석까지 넓히라는 제안, 과거 데이터로 그린 개선 그래프는 오버피팅일 수 있으니 실시간 out-of-sample로 검증하고 예측 오차를 정산하는 변동 가격 계약을 검토하라는 주문. 수강생은 GRP를 디지털화한 CPV 근거를 요청"
+    ],
+    scenes: [
+      {
+        title: "출발점: 시청률 60% 하락과 줄어드는 사람",
+        text: "발표자는 중간발표 때 자리에 없던 심사위원들을 위해 출발점을 다시 짚었다. 이 과제를 시작한 이유는 ABC에 지원한 이유와 같다. SBS M&C는 시청률을 판매하는 회사인데, 사람들이 TV를 잘 보지 않으면서 코로나 이후 시청률이 60% 정도 떨어졌고 광고는 그보다 더 크게 줄었다. 작년에 약 20억 원의 영업적자가 났고 올해도 적자가 예상된다.\n사람이 영업을 하는 회사여서 결국 인력을 줄일 수밖에 없었다. 100명 정도이던 회사가 지금은 80명 정도다. 사람이 나가면 남은 사람이 효율적으로 일할 수 있도록 업무 방식을 바꿔야 한다고 보고 만든 것이 스마트 메소디아다. 메소디아는 원래 회사의 청약 시스템 이름이다.",
+        facts: [
+          { num: "60%", label: "코로나 이후 시청률 하락 폭, 광고는 그보다 더 크게 감소" },
+          { num: "약 20억 원", label: "작년 영업적자, 올해도 적자 예상" },
+          { num: "100명 → 80명", label: "회사 인원 변화" }
+        ]
+      },
+      {
+        title: "스마트 메소디아의 짐: 맞지 않는 시청률 예측",
+        text: "2년 반에서 3년 전, 발표자는 외주를 써서 스마트 메소디아를 만들었다. 핵심 기능은 시청률 예측이었다. 그런데 시간이 지나면서 예측이 하나도 맞지 않았고, 시스템은 실질적으로 쓰이지 못하고 있다. 도입을 먼저 주장한 사람으로서 발표자에게는 책임감과 마음의 짐이 남았다.\n돌아보면 원인은 이해의 부족이었다. 당시 AI 업체를 만나 여러 로직을 설명 들었지만 이해하지 못한 부분이 많았고, 그러다 보니 계속 업그레이드돼야 할 모델이 그렇게 되지 못했다. 그 단서를 찾으려고 6개월 전 ABC에 왔다. 스스로를 문과생이라 부른 발표자는 수업의 절반은 솔직히 못 알아들었지만, 6개월이 고민을 다시 해볼 수 있었던 시간이었다고 했다.",
+        quote: "이 시스템 도입을 먼저 주장했던 저로서는 여기에 대한 책임감, 마음의 짐이 있었습니다."
+      },
+      {
+        title: "IT 직원 2명: 그래서 본부장이 직접 만든다",
+        text: "회사는 80명 규모이고 IT 부서가 따로 없으며 IT 직원은 2명뿐이다. 그래서 AX는 결국 발표자 본인이 해야 하는 일이 됐다. 혼자 하다 보니 시간적으로 벅차고 진행도 느리다.\n과제는 둘이다. 하나는 중간발표에서 다룬 스마트 메소디아의 시청률 예측이고, 다른 하나는 제안서 자동화다. 영업사원의 일 중 가장 큰 비중을 차지하는 것이 제안서 작성이다. 광고주를 만나면 제안서를 쓰고, 그 제안서를 들고 다시 광고주와 이야기를 나눈다. 이 부분을 자동화하는 작업을 함께 준비해 왔다.",
+        list: [
+          "<b>스마트 메소디아 시청률 예측</b>, 방송광고 구매(청약) 단계, 중간발표에서 이어진 첫 번째 과제",
+          "<b>제안서 자동화</b>, 영업사원 업무 중 가장 큰 비중인 제안서 작성을 자동화"
+        ]
+      },
+      {
+        title: "다시 만들기: 최근 3개월, 마스킹한 닐슨 데이터",
+        text: "발표자는 클로드와 대화하며 검토 사안을 하나씩 정리했다. 먼저 확인한 것은, 수작업 없이 전부 자동으로 하려다 보니 오히려 오차가 훨씬 커졌다는 점이다. 데이터 범위도 바꿨다. 시청률이 계속 떨어지고 있어 옛날 데이터는 크게 의미가 없으므로 최근 3개월만 쓴다.\n데이터 보안도 배웠다. 닐슨 데이터는 그대로 클로드에 올리면 안 되는데, 이를 알려준 것도 클로드였다. 잘못하면 닐슨과 문제가 될 수 있다는 안내와 함께 마스킹을 제안받았고, 실제 프로그램명 대신 가려진 이름으로 올려 모델 작업을 했다. 광고 유형도 고려했다. 프로그램 광고와 달리 스팟 광고는 건수가 매우 많고 예측이 어려운데, 앞뒤 프로그램의 영향을 자동으로 산출해 반영했다.",
+        list: [
+          "<b>자동화만으로는 오차가 커진다</b>, 수작업 입력을 함께 두는 구조로 전환",
+          "<b>최근 3개월 데이터</b>, 시청률이 계속 떨어져 옛날 데이터는 의미가 작음",
+          "<b>닐슨 데이터 마스킹</b>, 프로그램명을 가린 뒤 클로드와 모델 작업",
+          "<b>스팟 광고</b>, 건수가 많고 예측이 어려워 앞뒤 프로그램의 영향을 자동 산출"
+        ]
+      },
+      {
+        title: "9월 검증: 단순 평균보다 나아진 새 모델과 보정 계수",
+        text: "9월 실적으로 비교해 봤다. 회색 선이 중간발표 때 구상한 단순 평균 방식이고, 새 모델은 그보다 개선됐다. 여기에 클로드가 제안한 보정 계수가 들어간다. 시청률은 계속 떨어지는 데다 계절 영향도 있다. 날씨가 추워지거나 비가 오면, 명절이면 시청률이 오른다. 이런 요인은 정확히 예측할 수 없으므로 사람이 매달 보정 계수를 넣어 주면 훨씬 정확한 숫자가 나온다는 것이다.\n엑셀 모델도 보여줬다. 노란색 칸은 광고주별 타깃의 기본 설정값으로, 주로 쓰는 2049(20~49세)가 기본으로 잡혀 있다. 그 옆에 예측값, 신규 프로그램·재방송·특집처럼 발표자가 직접 넣는 수작업 값, 실적이 있고, 맨 오른쪽에 실제와 예측이 나란히 놓인다. 예측이 다소 높게 잡힌 구간이 있었지만, 보정 계수가 들어가면서 9월 중순 이후로는 예측과 실제의 간격이 좁혀지는 모습이었다.",
+        flow: [
+          { t: "기본값", s: "광고주별 타깃, 기본 2049" },
+          { t: "자동 예측", s: "최근 3개월 실적 기반 새 모델" },
+          { t: "보정 계수", s: "계절·날씨·명절 요인을 사람이 매달 입력" },
+          { t: "수작업 입력", s: "신규·재방·특집 프로그램" },
+          { t: "실제 vs 예측", s: "주간 닐슨 데이터로 비교·누적" }
+        ]
+      },
+      {
+        title: "놀라움과 걱정: 로직을 다 이해하지 못한다는 것",
+        text: "지금 모델에는 9월 한 달 치가 들어가 있고, 일주일에 한 번씩 닐슨 데이터를 넣으면 차곡차곡 쌓여 점점 더 잘 예측하는 로직이 만들어지고 있다고 발표자는 봤다. 로직이 어떻게 나오는지 잘 이해하지 못하는데도 예측이 된다는 것 자체가 놀라웠다고 했다.\n그러나 바로 그 점이 걱정이기도 하다. 로직에 대한 이해도가 떨어지면, 앞서 다른 발표에서도 나왔듯 문제가 생겼을 때 대처할 수 있을지 장담할 수 없다. 발표자가 처음에 짚은 실패 원인, 업체의 로직을 이해하지 못했다는 점과 맞닿아 있는 고민이다.",
+        quote: "저는 그 로직이 어떻게 나오는지도 잘 이해가 안 가는데, 그럼에도 그렇게 예측을 한다는 것 자체가 하면서도 굉장히 놀랍다는 생각밖에 들지 않았습니다."
+      },
+      {
+        title: "중간발표 대비 진척: 설계에서 돌아가는 모델로",
+        text: "중간발표 때 발표자는 요일·CM 위치를 구분하지 않는 대표값, P10/P50/P90 구간, 예외 편성은 담당자가 직접 넣는 이원 구조를 설계로 제시했고, 단계로는 Phase 0 현황 진단에 있었다. 최종발표에서는 그 설계가 실제 데이터로 돌아가는 엑셀 모델이 됐다. 단순 평균이 비교 기준선이 됐고, 보정 계수라는 새 장치가 더해졌다.\n정확도에 대한 생각도 달라졌다. 중간발표 때는 클로드가 80~90%는 가능하지만 90%를 넘기는 것은 불가능하다고 답했다고 전했는데, 이번에는 개별 프로그램이 아니라 한 달 누적 기준으로 90% 신뢰도를 목표로 잡았다. 중장기 과제로 미뤄 두었던 플래닝 쪽도 대시보드 시제품으로 앞당겨졌다.",
+        table: {
+          head: ["구분", "중간발표 (8월)", "최종발표 (10월)"],
+          rows: [
+            ["예측 방식", "요일·CM 위치 구분 없는 대표값, P10/P50/P90 구간 추정 설계", "최근 3개월 데이터로 클로드와 새 모델 구축, 단순 평균 대비 개선 확인"],
+            ["사람의 개입", "예외 편성·빅이벤트는 담당자가 직접 입력", "신규·재방·특집은 수작업 입력, 계절·날씨·명절은 보정 계수로 반영"],
+            ["진행 단계", "Phase 0 현황 진단", "9월부터 주간 단위 운영, 12월까지 정리 후 파이썬으로 메소디아 접목"],
+            ["정확도 목표", "1차 목표 MAPE 10~20%, 90% 초과는 어렵다는 판단", "한 달 누적 기준 90% 신뢰도"],
+            ["플래닝·제안", "사후 분석·예산 배분은 중장기 과제", "유튜브 채널 믹스, 제안서·결과 보고서 자동 생성 대시보드 시제품"]
+          ]
+        }
+      },
+      {
+        title: "일정: 12월까지 다듬어 메소디아에 접목",
+        text: "9월부터 주간 단위로 운영해 왔고, 12월까지 3개월 정도 정리가 끝나면 모델이 더 안정될 것으로 봤다. 모델이 완성되면 파이썬으로 옮겨 스마트 메소디아에 연결한다. 현재 메소디아 안에서 예측 시스템이 어떻게 돌아가는지는 발표자가 알 수 있는 부분이 아니어서, 완성된 모델을 IT에 이관해 접목하는 방식을 택했다.\n남은 숙제도 분명히 했다. 보정 계수는 계속 필요하고, 숫자는 맞을 수도 틀릴 수도 있다. 특히 신규 프로그램은 고민이 많아 더 연구해야 한다.",
+        flow: [
+          { t: "9월~", s: "주간 단위로 닐슨 데이터 입력, 모델 운영" },
+          { t: "12월", s: "3개월 정리 후 모델 안정화" },
+          { t: "파이썬 전환", s: "완성된 모델을 코드로 옮김" },
+          { t: "IT 이관", s: "스마트 메소디아에 예측 시스템 접목" }
+        ]
+      },
+      {
+        title: "플래닝으로: SBS 유튜브 플래닝 대시보드",
+        text: "스마트 메소디아에는 예측만 있는 것이 아니다. 방송광고는 통상 플래닝, 구매, 포스트 바이의 세 단계로 이뤄진다. 시청률 예측은 구매 단에 해당하고, 예측이 되면 스마트 메소디아를 쓸 수 있으므로 첫 번째 과제로 삼았다. 더 중심적으로 해야 할 것은 플래닝이다.\n발표자는 'SBS 유튜브 플래닝'의 약자로 직접 이름 붙인 대시보드를 시연했다. 광고주 정보, 집행 예산, 옵션과 보너스 같은 판매 제도 항목을 넣으면 예상 산출 자료가 나온다. SBS 유튜브 채널은 50개 정도인데 다 쓸 수는 없으니, 광고주 브랜드의 성격을 적어 주면 시스템이 캠페인 맥락을 이해해 주요 채널로 믹스를 짜 준다. 플래닝을 고르면 바로 제안서가 생성되고, 집행이 끝나면 결과를 보여준다. 앞으로 유튜브뿐 아니라 회사의 디지털 매체 자산 전체로 통합 전략을 세우는 대시보드로 넓히고, 시청률 예측이 완성되면 지상파 방송광고 구매 시스템과 접목해 전략 수립과 제안서에서 실행까지 잇는 것이 목표다.",
+        flow: [
+          { t: "플래닝", s: "광고주 정보·예산·브랜드 성격 입력, 채널 믹스, 제안서 생성" },
+          { t: "구매", s: "스마트 메소디아 청약, 시청률 예측" },
+          { t: "포스트 바이", s: "집행 결과 보고서" }
+        ]
+      },
+      {
+        title: "제안서 7장, 결과 보고서 4장",
+        text: "핵심은 네 가지다. 단가, 데이터, 제안서 7장 자동 생성, 실적 비교 4장 자동 생성. 7장짜리 제안서에는 채널 믹스, 채널 선정, 예산 효과, CPM 단가가 담긴다. 제안을 하나만 할 수는 없으니 광고주별로 두 개 안을 넣고, 한 장으로 요약해 1안과 2안 중 쉽게 고르게 한다. 집행 뒤에는 4장짜리 결과 보고서가 나온다.\n발표자는 모두 초기 버전 샘플이어서 시각적으로 다듬지 않았고, 실제로 광고주에게 나가려면 훨씬 상세해야 한다고 덧붙였다.",
+        facts: [
+          { num: "50개", label: "SBS 유튜브 채널 수, 브랜드 성격에 맞춰 주요 채널로 믹스" },
+          { num: "7장", label: "자동 생성 제안서 샘플 분량" },
+          { num: "2개 안", label: "광고주별 제안, 한 장 요약으로 선택" },
+          { num: "4장", label: "자동 생성 결과 보고서(실적 비교) 샘플 분량" }
+        ]
+      },
+      {
+        title: "회의적인 영업 조직과 함께 공부하기",
+        text: "가장 큰 벽은 사람이다. 영업 조직의 직원들은 AX에 굉장히 회의적이다. 우리는 사람을 만나 영업을 하는데 AX가 필요하냐, 한다면 어떻게 하냐, 이런 식으로 제안서 한두 장 쓰고 마는 것 아니냐는 이야기를 많이 한다. 발표자는 다음 달 중 하루를 잡아 관심 있는 직원들과 함께, 그동안 받은 교육과 엑셀 모델, 대시보드를 보여주며 같이 고민할 계획이다. 반도 이해하지 못했다는 자료를 차곡차곡 쌓아 두고 직원들과 천천히 다시 읽으며 공부하겠다는 것이다.\n발표는 과정에 대한 소회로 끝났다. 6개월은 배운 것 이상으로 생각을 많이 할 수 있었던 귀한 시간이었고, 기간을 4개월 정도로 줄여서라도 더 많은 사람이 이 교육을 받았으면 좋겠다고 했다.",
+        quote: "6개월이라는 시간이 저에게는 정말 중요하고 귀한, 배울 수 있는 시간이었고, 배운 것도 배운 것이지만 생각을 많이 할 수 있었던 시간이었습니다."
+      },
+      {
+        title: "질의응답에서 정리된 방향: 유튜브 조회수, 누적 90%, CPM",
+        text: "드라마 시청률은 유명 배우가 나와도 실패할 만큼 예측이 어렵다. 회사가 방영 시기, 출연진, 장르, 출연진의 과거 시청률까지 넣어 봤지만 잘 맞지 않았는데, 직원 한 명과 예고편의 유튜브 조회수로 추정해 보니 놀랍게도 가장 잘 맞았다. 발표자는 이런 요인을 하나둘 발견해 가는 중이라고 했다.\n정확도에 대한 생각도 정리됐다. 광고는 프로그램 하나를 사는 것이 아니어서, 20개, 100개를 모으면 개별 프로그램의 격차는 크게 의미가 없다. 어떤 것은 과대, 어떤 것은 과소로 잡혀 평균을 내면 비슷해진다. 처음에 너무 정확하게 하려다 문제가 생긴 것이니, 한 달 누적 기준 90% 신뢰도를 목표로 만들어 보고 문제를 고쳐 가겠다는 것이다. 지표도 바뀐다. TV GRP는 이미 관심 밖이고, 디지털과 지상파를 CPM 단가로 통일해 통합 제안서의 기준을 맞추려 한다. 발표자는 언젠가 GRP라는 개념이 사라지고 CPM이 통일된 지표가 될 것으로 봤다.",
+        quote: "실제로 프로그램이 20개, 100개가 되면, 개별 프로그램 간의 격차는 100개를 모아놓으면 크게 의미가 없습니다."
+      }
+    ],
+    qna: [
+      {
+        q: "사람이 드라마를 보게 되는 이유는 여러 팩터라기보다 신선한 내용, 즉 맥락이다. 콘텐츠의 맥락을 숫자로 표현해 예측 팩터로 반영할 계획은 없나?",
+        a: "드라마는 유명 배우가 나와도 실패할 만큼 예측이 어렵다. 방영 시기와 과거 데이터, 출연진, 장르, 출연진의 과거 시청률까지 넣어 봤지만 잘 맞지 않았다. 대신 예고편의 유튜브 조회수로 직원과 추정해 보니 시청률 예측의 파라미터가 될 만큼 놀랍게 잘 맞았고, 이런 요인을 하나씩 발견해 가는 중이다."
+      },
+      {
+        q: "스탠퍼드 연구진이 창업한 회사처럼 시청자 하나하나를 AI 페르소나로 만들어 반응을 분석하면, 통계적 방법을 넘어 왜 시청률이 높은지까지 볼 수 있다. 메가 유튜버를 AI로 복제하거나 콘텐츠 생성, 홍보까지 미디어에 AI를 적용할 곳이 많으니, 직원들과 함께 배워 더 넓은 혁신으로 이어가 보라.",
+        a: "답변 없이 격려의 코멘트로 마무리됐다."
+      },
+      {
+        q: "과거 데이터로 보여준 개선 그래프는 나빠지면 고치고 또 고친 결과라 오버피팅일 수 있어 엄밀한 검증이 아니다. 모델을 더 고치지 않은 상태에서 옛 모델과 리얼타임으로 비교하는 out-of-sample 검증이 설득력 있다. 또 기본 광고비에 실제 시청과 예측의 차이를 정산하는 변동비(상한과 환불 범위 포함)를 붙이면, 광고주의 신뢰와 내부의 예측 개선 인센티브를 함께 얻을 수 있지 않나?",
+        a: "여러 가지로 검토해 보겠다. 광고는 프로그램 하나가 아니라 20개, 100개를 묶어 사는 것이라 개별 격차는 평균을 내면 크게 의미가 없다. 처음에는 너무 정확하게 하려다 문제가 생겼으니, 한 달 누적 기준 90% 신뢰도를 목표로 클로드와 만들어 보고 어떤 문제가 생기는지 보며 고쳐 가겠다."
+      },
+      {
+        q: "(광고대행 관점의 수강생 코멘트) 광고주 상당수는 GRP 개념조차 없고, 어느 방송사냐보다 유튜브·넷플릭스에서 어떤 프로그램으로 얼마나 노출되느냐를 본다. 시청률은 대행사가 팔 수 있는 USP가 아니니, GRP를 디지털화해 왜 SBS 프로그램이어야 하는지 근거를 만들어 주면 대행사도 SBS를 제안하기 쉬울 것이다.",
+        a: "TV GRP는 이미 관심 밖이고, 이 시스템은 자동화를 위한 프로그램일 뿐 이것만으로 되는 것은 아니다. 디지털과 지상파 방송광고 모두 CPM 단가로 가고 있어 CPM으로 통일하려 하며, 언젠가 GRP는 사라지고 CPM이 통일된 지표가 될 것으로 본다. 통합 제안서의 CPM 기준을 맞춰 광고주가 즉시 이해할 수 있게 하겠다."
+      },
+      {
+        q: "(같은 수강생) 대행사는 최근 CPV 기준으로 매체를 많이 판다. SBS 프로그램이 CPV 기준으로 어떤 강점이 있는지 근거를 만들어 주는 시스템이 있으면 SBS에 더 유리할 것이다.",
+        a: "발표자가 감사하다고 답하며 마무리됐다."
+      }
+    ]
+  },
+  {
+    no: 9,
+    name: "박상준",
+    affil: "쌤소나이트코리아",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 10,
+    name: "박용규",
+    affil: "마르시스 · 대표",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 11,
+    name: "박정민",
+    affil: "KT알파 · 대표이사",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 12,
+    name: "박종호",
+    affil: "한국앤컴퍼니 · 대표이사",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 13,
+    name: "박태윤",
+    affil: "에이피그린 · 대표",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 14,
+    name: "배민호",
+    affil: "엠엔비 · 대표",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 15,
+    name: "성완진",
+    affil: "유진한일합섬 · 대표이사",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 16,
+    name: "손형주",
+    affil: "에이비씨건설산업 · 대표",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 17,
+    name: "송윤화",
+    affil: "카123제스퍼 · 대표이사",
+    topic: "업무 자동화에서 시작된 AX가 카123의 방향을 그리다: AI Native Company로 가는 카123제스퍼",
+    summary: "인원이 함께 늘어나는 운영 회사의 딜레마 속에 2026년을 AI 네이티브 원년으로 삼은 카123제스퍼가, 외주 개발 대신 현업 직원들이 클로드 코드로 거래명세서, 법무 서면, 과태료, 매각, 정비 업무를 직접 자동화해 자산관리 그룹에서만 누적 1.7억 원을 절감한 과정과, 바이브 코딩으로 준비한 구독 플랫폼을 발판으로 렌터카 오퍼레이션 솔루션으로 가려는 비전을 담은 발표.",
+    tags: ["카셰어링·렌탈", "AI 네이티브 전환", "현업 주도 업무 자동화", "선제적 차량 관리", "자동차 구독 플랫폼"],
+    links: [
+      { label: "발표 슬라이드 (PDF)", url: "slides/17.pdf" },
+      { label: "속기록", url: "transcripts/17.html" },
+      { label: "중간발표", url: "https://kdtfintech.github.io/ABC_5_midterm/archive5.html#17" }
+    ],
+    highlights: [
+      "빠르게 성장할수록 인원도 함께 늘어나는 운영 회사의 딜레마 속에 2026년을 AI 네이티브 원년으로 선언. 외주 개발 견적이 4,500만 원에서 2.5억 원으로 오르자, 현업 담당자가 직접 기획·개발하고 그룹이 검증해 운영에 적용하는 'AX 사이클'로 방향을 바꿨다",
+      "외주가 2.5억 원에도 못 하겠다던 89종 거래명세서 자동화를 담당자가 3만 3천 원짜리 클로드 코드 계정으로 3주 만에 만들었다. 법무 서면 60분→5분, 과태료 발행처별 자동 발송, 매각은 6시간 넘던 업무가 클릭 한 번이 되어 자산관리 그룹에서만 5월 이후 누적 1.7억 원, 6명분을 절감",
+      "DTC 경고에서 슬랙, 콜센터, 긴급출동으로 이어져 17분 만에 고객을 만나는 선제적 관리와 담당자 업무 71시간 절감이라는 업무 재배치를 이뤘고, 바이브 코딩만으로 준비한 구독 플랫폼과 오토라이드 데이터 구조로 렌터카 오퍼레이션 솔루션이라는 비전을 그렸다",
+      "심사위원: 수집 데이터의 개인정보 관리와 비식별화, 바이브 코딩의 보안·검증 취약성 보강을 주문했고, 리더가 바뀌는 것이 조직 혁신의 가장 빠른 길이라는 것을 보여 준 사례라고 평가"
+    ],
+    scenes: [
+      {
+        title: "출발점: 인원의 딜레마와 AI 네이티브 원년",
+        text: "카123제스퍼는 아주 빠르게 성장했지만, 운영을 전담하는 회사는 인원도 함께 늘어난다. 중소기업으로서 100명 이하로 인원을 관리하려면 어떻게 해야 하는가가 발표자의 딜레마였다. 그래서 잡은 방향이 2026년을 원년으로 AI 네이티브 기업으로 바꾸는 것이다. 그 뒤에는 구독을 풀 스펙으로 운영할 수 있는 운영 사업자로 자리매김해, 자율주행 시대의 자동차 구독과 자동차 관리업으로 회사를 바꿔 나간다.\n2024년에 그린 기술 로드맵에 따라 2024~2025년에 통합 관리 시스템과 오토라이드 솔루션은 다 만들어 두었다. AI를 접목하고 싶어 2025년에 이름만 들으면 알 만한 기업들을 많이 만났지만, 그들이 제시한 단가와 비용은 너무 비쌌다. 그러다 2026년 2월 Claude Opus 4.6을 만나 클로드 코드로 무언가 해 볼 수 있지 않을까 고민하기 시작했다. 지금은 선제적 차량 관리와 리밸런싱을 이미 구현했고, 비전을 시범 운영하는 회사로 바뀌어 가고 있다.",
+        quote: "중소기업인 저희 회사가 100명 이하로 인원을 관리하려면 어떻게 해야 하느냐는 고민을 가지고 있었고요. AI의 변화와 함께 2026년을 원년으로 AI 네이티브 기업으로 바꾸고자 합니다."
+      },
+      {
+        title: "첫째, 사람이 바뀌었다: 쓰는 사람이 만드는 AX 사이클",
+        text: "발표자는 무엇이 바뀌었는지를 네 개의 섹션으로 설명하겠다며, 첫째로 '사람이 바뀌었다'를 꼽았다. 쓰는 사람이 만드는 세상이다. 현업 담당자가 직접 기획하고 개발하며, 해당 그룹이 함께 검증하고, 실제 운영에 적용한다. 여기서 절감 항목이 나오면 다음 사이클로 넘어가는 AX 사이클이 만들어졌고, 그 결과 실제 비용이 줄고 조직은 스스로 움직이는 조직으로 바뀌었다.\n담당자의 일도 달라졌다. 전에는 데이터를 입력하고 조회하고 스프레드시트를 만들어 자기 PC에 저장하는 것이 주된 일이었다면, 이제 발표에 등장하는 담당자들은 검토하고 판단하며, 경고를 먼저 보고 선조치한다. 발표자는 6~7월부터 10월까지 절감한 혁신 비용을 슬라이드로 함께 보여 줬다.",
+        flow: [
+          { t: "현업이 기획 · 개발", s: "쓰는 사람이 직접 요건을 정하고 만든다" },
+          { t: "해당 그룹이 검증", s: "같은 그룹 동료들이 함께 확인" },
+          { t: "실제 운영에 적용", s: "현업 업무에 바로 투입" },
+          { t: "절감 확인 → 다음 사이클", s: "절감 항목이 나오면 다음 자동화로" }
+        ]
+      },
+      {
+        title: "견적 4,500만 원이 2.5억 원으로: 그래서 직접 만들었다",
+        text: "발표자는 이 변화를 설명하려면 교육 이야기를 먼저 해야 한다고 했다. 올해 2월 클로드 코드를 접한 발표자가 담당자에게 업무 자동화 봇을 만들어 보자고 하자, 담당자는 '요건은 다 정리할 수 있는데 개발은 못 한다, 개발 회사를 붙여 달라'고 답했다. 실제로 개발 회사를 붙여 4,500만 원 견적을 받았지만, 요건을 다 검토하더니 2억 5천만 원으로 올라갔다.\n그 와중에 5월부터 이 과정을 듣기 시작했다. 교수들과 함께 커서로 만들고 세팅해 데이터를 자동화했고, 클로드 코드는 자율 학습을 했다. 담당자 한 명을 지정해 두 가지를 만들기 시작했고, 발표자는 교수들의 강의를 회사에서 계속 전파 교육했다. 그 결과 7월과 9월에 사내 발표가 있었고 11월에 추가 발표가 예정돼 있다. 회사는 2천만 원 예산 한도에서 업무가 자동화되면 최대 100만 원, 자기 업무를 자동화하면 최소 30만 원을 지원하기 시작했다. 변화는 자산관리 그룹에서 카셰어링과 차량 대여 그룹으로 번졌고, 11월에는 경영지원실이 발표하겠다고 나섰다. 발표자는 '역시 DX 그룹이 제일 변화가 느리다'고 덧붙였다.",
+        facts: [
+          { num: "4,500만 → 2.5억 원", label: "업무 자동화 외주 개발 견적, 요건 검토 후 상승" },
+          { num: "2천만 원", label: "사내 자동화 포상 예산 한도" },
+          { num: "30만~100만 원", label: "자동화 1건당 포상 (자기 업무 자동화 최소 30만 원)" },
+          { num: "7월 · 9월 · 11월", label: "사내 자동화 발표 (11월은 경영지원실 추가 예정)" }
+        ]
+      },
+      {
+        title: "89종 거래명세서: 2.5억짜리를 3주 만에",
+        text: "발표자는 현업에서 실제로 쓰는 8개 영역의 화면을 보여 주며 자산관리 그룹부터 설명했다. 이 그룹은 청구, 입금, 미수, 법적 회수, 과태료, 매각까지 맡는데, 이 업무 모두에 업무 자동화 봇이 만들어져 쓰이고 있다. 첫 번째는 청구·발행이다. 통합 관리 시스템에 기능은 이미 있다. 문제는 고객사마다 요구하는 거래명세서 양식이 다르다는 점이다. 한 공기업 고객사는 지사가 9곳, 코스맥스는 부서가 4곳이고, 집계해 보니 양식이 89종을 넘었다. 개발팀에 바꿔 달라고 하면 업무 기획서가 오가다 흐지부지되니, 담당자들은 시스템에서 내려받아 엑셀로 직접 만들고 있었다.\n바로 이것이 외주가 2.5억 원 견적을 내고도 못 하겠다던 그 서비스다. 담당자가 3만 3천 원짜리 클로드 코드 계정으로 3주 만에 만들었다. 그러자 담당자가 다음 제안을 했다. 장기 대여 회사라 정해진 날짜에 은행 자동이체가 들어와야 하는데, 안 들어오면 알려 주는 은행의 미수금 대사 서비스를 돈을 내고 쓰고 있었다. 담당자는 은행 서비스는 은행 데이터만 다루지만, 직접 만들면 카드 데이터부터 모든 계정 데이터를 한꺼번에 관리하고 구간별로 분석해 리포트를 받을 수 있다고 했고, 그렇게 만든 서비스가 지금 돌아간다.",
+        facts: [
+          { num: "89종+", label: "고객사별로 다른 거래명세서 양식" },
+          { num: "3주", label: "담당자가 직접 개발한 기간" },
+          { num: "3만 3천 원", label: "사용한 클로드 코드 계정 비용" },
+          { num: "2.5억 원", label: "외주가 견적을 내고도 못 하겠다던 서비스" }
+        ],
+        quote: "이게 바로 2.5억 견적을 받았던 그것이고, 그걸로도 못 하겠다고 했던 바로 그 서비스인데요. 3만 3천 원짜리 클로드 코드 계정을 파서 3주 만에 담당자가 만들었어요."
+      },
+      {
+        title: "법무 서면, 과태료, 매각: 자산관리 그룹에서만 1.7억 원",
+        text: "미수가 생기면 법무 서면을 만들어야 한다. 카셰어링은 금액이 아주 작은 건이 많지만 서면 양식은 똑같아야 해서, 이것도 자동화해 60분 이상 걸리던 작업이 5분이면 끝난다. 과태료·범칙금은 카셰어링과 렌탈에서 가장 힘든 일 중 하나다. 하이패스 카드를 깜빡하면 회사 명의로 고지서가 오고, 실제 이용자를 입증하면 명의를 바꿔 주지만 기관마다 양식과 팩스, 전화, 사이트 접속 방식이 다 다르다. 이 수작업을 완전히 자동화해 지금은 발행처별로 발송이 자동으로 갈린다. 발표자는 이 모두가 담당 직원들이 클로드 코드로 직접 만든 서비스라고 강조했다.\n매각도 자동화가 끝났다. 차량 4,500여 대 가운데 1년에 1천 대 넘게, 한 달 100~150대를 팔아야 하는데, 주차장에서 빨리 빠지지 않으면 주차비가 나와 주로 중고차 매매상이나 경매장으로 보냈고 경매 수수료도 만만치 않았다. 지금은 매각 준비를 일괄 처리하고 낙찰 이후 업무까지 한 번에 돌아가, 6시간 넘던 업무가 클릭 한 번으로 끝나면서 이제는 경매장에 차를 보내지 않는다. 자산관리 그룹이 5월부터 지금까지 누적으로 절감한 원가는 1.7억 원 정도, 인원으로 환산하면 6명 정도다. 이 그룹은 발표자가 처음 지정한 담당 팀장이 있던 곳이다.",
+        facts: [
+          { num: "60분 → 5분", label: "법무 서면 1건 작성 시간" },
+          { num: "월 100~150대", label: "매각해야 하는 차량 (보유 4,500여 대)" },
+          { num: "1.7억 원", label: "자산관리 그룹 5월 이후 누적 원가 절감" },
+          { num: "6명", label: "인원으로 환산한 절감 효과" }
+        ]
+      },
+      {
+        title: "카셰어링 그룹: 초대졸 직원들이 만든 대시보드",
+        text: "변화는 카셰어링 그룹으로 이어졌다. 발표자는 사내 발표 자리에서 발표하는 담당자 사진을 가져와 보여 줬다. 예전에는 수많은 시트를 열어 매일 실적 리포트를 봤는데, 이것을 대시보드로 만들어 자동화했다. 과정 중 한 교수가 대시보드를 만드는 이유는 인사이트를 도출하기 위해서라고 했던 말을 받아, 모인 데이터의 인사이트가 자동으로 작성되는 버전까지 만들어 돌리고 있다.\n이 조직을 바꾼 것은 전부 초대졸 출신 직원들이다. 그럼에도 한번 만들어 보겠다고 나섰고, 담당자가 직접 만든 웹 페이지가 클라우드에서 서비스로 돌아간다. 차량 재배치, 전국 스팟의 성과, 차종 등급별 실적 집계를 다룬다. 이 과제가 잘 되어 국책 과제로 선정됐고, 지금 확장 모델을 만들고 있다.",
+        quote: "이 조직이 왜 바뀌었냐면, 바로 이 친구들입니다. 전부 초대졸 출신 직원들인데, 한번 만들어 보겠다고 한 거였습니다."
+      },
+      {
+        title: "정비: 세차 업체 정보는 스킬이, 타이어 경고에는 17분",
+        text: "발표자가 '제일 재미있는 변화'라고 한 두 번째 변화는 정비 쪽이다. 카셰어링 스팟에는 보유불명 사고가 많다. 반납 사진을 교묘하게 안 찍고 반납하는 경우가 많아 세차와 정비를 자주 보내게 된다. 스프레드시트로 하던 작업은 전부 앱으로 만들어 오픈했다. 계기는 과정에서의 실습이었다. 5기가 따로 남아 조교에게 클로드 코드 사용법을 실습으로 배웠고, 발표자는 노션으로 받은 자료를 담당자들에게 전달해 학습하게 했다. 기존 시스템이 있는데도 이것이 필요한 이유는, 세차를 맡기는 업체만 전국에 50곳이 넘고 그중 상당수가 회사 앱 대신 문자, 밴드, 카톡으로 사진을 보내기 때문이다. 이제는 그 정보 수집을 스킬이 맡아 토큰도 줄였고, 담당자는 판단만 한다. 접수를 기다리던 정비가 경고를 보고 먼저 정비하는 서비스로 바뀌었다.\n실제 사례도 있다. 운행 중인 차량의 타이어 하나의 공기압이 너무 낮다는 신호가 DTC 데이터로 잡혀 알림이 떴고, 담당 매니저가 한 일은 콜센터와 연동된 슬랙에 글을 올린 것 하나였다. 회사는 고객 개인정보를 갖고 있지 않아 콜센터가 고객에게 연락하는데, 메시지가 올라가면 고객 연락처, 주소, 현재 위치로 긴급출동 서비스 입력까지 자동으로 이어지고, 긴급출동 업체는 접수 버튼만 누르면 된다. 글을 쓰고 정확히 17분 만에 고객을 만나 타이어를 조치했다. 카셰어링 이용자 대부분은 초보 운전자라 경고등을 보지 못하거나 뜻을 모르고 달리다 타이어가 터지고, 뒤차에 받힌 뒤에야 접수되는 것이 일반적이었다.",
+        flow: [
+          { t: "DTC 경고 감지", s: "운행 중 차량의 타이어 공기압 이상 알림" },
+          { t: "매니저 슬랙 게시", s: "콜센터와 연동된 슬랙에 글 한 건" },
+          { t: "콜센터 자동 입력", s: "고객 연락처 · 주소 · 현재 위치로 긴급출동 입력" },
+          { t: "긴급출동 접수 · 출동", s: "접수 버튼 클릭, 글을 쓴 지 17분 만에 고객 도착" }
+        ]
+      },
+      {
+        title: "업무의 재배치: 71시간, 그리고 다음 자동화 연구",
+        text: "이 사례를 만든 매니저는 사내 발표에서 '이렇게 하고 나니 제 업무 중 71시간이 줄었다, 근무일 20일 중 9일이 남는다'고 했다. 예전에는 엑셀에 데이터를 입력하는 로봇 같았는데, 그 로봇 같은 일은 자동화하고 이제 다음에 무엇을 자동화할지 연구하기 시작했다는 것이다. 발표자는 이것을 시간 단축이 아니라 업무의 재배치라고 불렀다.\n보유불명 사고 문제도 한 걸음 나아갔다. 과정에서 만난 교수와 협력해 발표 전날 보도자료가 나갔고, 협력하는 AI 회사와 함께 사진을 판독해 자동으로 걸러 내는 프로젝트를 시작했다.",
+        facts: [
+          { num: "71시간", label: "한 담당자의 업무에서 줄어든 시간" },
+          { num: "20일 중 9일", label: "근무일 기준으로 남게 된 시간" },
+          { num: "17분", label: "경고 알림 후 고객을 만나기까지 걸린 시간" }
+        ],
+        quote: "시간을 어떻게 줄였느냐가 아니라, 업무의 재배치가 일어났습니다."
+      },
+      {
+        title: "중간발표 이후: 계획에서 실제 운영으로",
+        text: "8월 중간발표에서는 완료된 자동화봇 3건(과태료, 법무 서면, 정산)과 진행 중인 두 과제(카셰어링 손익 분석·오더 관리, 보유불명 사고 판독을 위한 데이터 수집), 10월 런칭을 목표로 한 구독 플랫폼, 그리고 자동화 포상 제도를 보고했다. 최종발표에서는 그 과제들이 실제로 돌아가는 모습이 나왔다. 자동화는 거래명세서, 은행 미수 대사, 매각까지 자산관리 업무 전반으로 넓어졌고, 카셰어링 리포트는 인사이트 자동 작성 대시보드와 국책 과제로 이어졌으며, 사진 판독은 외부 협력 프로젝트로 착수됐다. 구독 플랫폼은 사이트 준비를 마치고 검증 단계에 있다.\n중간발표 질의응답에서 예고했던 중고차 예상가 적정성 분석과 사고 RAG 시스템은 최종발표에서 따로 다루지 않았다.",
+        table: {
+          head: ["항목", "중간발표 (8월)", "최종발표 (10월)"],
+          rows: [
+            ["업무 자동화", "자동화봇 3건 완료 (과태료 · 법무 서면 · 정산)", "거래명세서 89종 · 은행 미수 대사 · 법무 서면 · 과태료 · 매각까지 자산관리 업무 전반"],
+            ["사내 확산", "포상 제도 도입, 다음 달 7건 발표 예정", "7월 · 9월 사내 발표, 카셰어링 · 차량 대여 그룹으로 확산, 11월 경영지원실 발표 예정"],
+            ["카셰어링 리포트", "스팟별 손익 집계와 리포트가 수작업", "대시보드와 인사이트 자동 작성, 차량 재배치 웹 서비스, 국책 과제 선정"],
+            ["보유불명 사고", "판독이 어려워 정제 데이터 수집부터 시작", "세차 업체 정보 수집을 스킬로 자동화, 사진 판독 자동 필터링 프로젝트 착수"],
+            ["데이터 구조", "원본은 사내 NAS, 가명 메타만 클라우드로", "로컬 DB → 사내 오라클 → 위탁사 조회 마트, AI용은 비식별 단방향 전송 계획"],
+            ["구독 플랫폼", "MVP 테스트, 10월 정식 런칭 목표", "바이브 코딩만으로 사이트 준비, 검증 단계, 카카오 · 투루카 · 토스 연동 런칭 예정"]
+          ]
+        }
+      },
+      {
+        title: "구독 플랫폼: 10억 원짜리 일을 세 사람이",
+        text: "회사는 B2B 기업이지만 자동차 구독 시장에 대해 투자도 받았고 고민을 이어 가고 있다. 유지 관리하는 차량이 2만 대가 조금 넘는데, 캐피탈사들의 중도 해지 차량을 어떻게 처리할지가 큰 고민이었다. 그 차량들을 올릴 구독 플랫폼을 만들자는 생각으로 2월부터 준비해 3월에 기획을 시작했고, 바이브 코딩만으로 사이트가 준비되어 지금 검증 단계를 돌리고 있다. 발표자는 감히 10억 원 이상의 투자 비용이 들었어야 할 일을 기획팀장 한 명이 두 명을 데리고 완성했다고 했다. 여기에 카카오, 투루카, 토스를 붙여 구독 서비스를 런칭해 운영할 계획이다.\n이날이 사업계획서 발표인 만큼 발표자는 회사가 갈 방향도 밝혔다. AI가 바꾸는 시대에 구독의 시대는 온다. 가전을 구독하듯 전기차와 자율주행차도 구독하게 될 것이다. 구독한다는 것은 반납과 해지가 자유롭고, 이용 중에도 메인터넌스를 해 줘야 하며, 매각 프로세스도 자동화되어야 한다는 뜻이다. 지금까지의 자동화가 바로 그 준비라는 논리다.",
+        facts: [
+          { num: "2만 대+", label: "유지 관리 중인 차량, 중도 해지 차량 처리가 과제" },
+          { num: "10억 원 이상", label: "원래 들었어야 할 투자 비용 (발표자 추산)" },
+          { num: "1명 + 2명", label: "기획팀장과 팀원 두 명이 바이브 코딩으로 완성" }
+        ]
+      },
+      {
+        title: "세차 로봇, 오토라이드, 데이터 구조: 렌터카 오퍼레이션 솔루션으로",
+        text: "발표 자료의 이미지도 사내 PD가 말 한마디로 직접 만든 것이다. 발표자의 아이디어는 아주 작은 로봇이 차 사이를 돌며 차를 닦는 것으로, 서울대학교 기계과의 학제 간 캡스톤으로 시범 로봇 2대를 만들고 있다. 회사의 큰 자산 하나는 오토라이드 단말기를 통해 많은 고객이 주행 데이터와 차량 상태 정보 데이터를 계속 보내 준다는 점이다. 이것을 어떻게 모을지 막연했지만, 교수들이 '두려워하지 말라, 그 데이터는 모을 수 있다'는 확신을 줬고, 그때부터 수집 방법을 연구하기 시작했다. 차량이 보낸 신호를 관제에서 데이터 인텔리전스로 바꾸고 실무자가 AX를 접목하면 살아서 움직이는 서비스가 될 것이라는 기대다. 자산을 소유하는 구조는 리스크가 큰 만큼, 면책금 청구나 과태료·범칙금 처리를 렌터카 오퍼레이션 솔루션으로 개발하는 것을 향후 방향으로 잡았다. 현대자동차가 회사에 렌터카 운영을 독점적으로 위탁한 것처럼 이런 서비스가 시장에 나올 것으로 본다.\n발표자는 회사가 지금 레벨 3 단계에 있다고 했다. 수집된 데이터는 로컬 DB 파일로 모이고, 정제된 데이터는 회사 내부 데이터베이스인 오라클에 쌓인다. 외부 위탁사가 봐야 하는 데이터는 조회 마트에서 연동해 보여 줄 수 있게 만들고 있고, AI에 써야 하는 데이터는 비식별화 처리를 거쳐 단방향으로 전송하는 구조를 계획하고 있다.",
+        flow: [
+          { t: "로컬 DB 파일", s: "오토라이드 단말 등에서 차량 데이터 1차 수집" },
+          { t: "사내 오라클", s: "정제된 데이터를 내부 데이터베이스에 축적" },
+          { t: "위탁사 조회 마트", s: "외부 위탁사가 볼 데이터를 연동해 제공 (구축 중)" },
+          { t: "AI용 단방향 전송", s: "비식별화 처리 후 단방향 전송 (계획)" }
+        ]
+      },
+      {
+        title: "남은 숙제와 비전: 시작은 업무 자동화였다",
+        text: "마지막 장표에서 발표자는 여전히 고민이 많다고 했다. 기술 변화가 빠르고 진부화의 속도가 빨라지면 사람들이 정말 장기 대여 대신 구독을 할까. 반납의 유연성이 높아지는 것은 양날의 검이어서, 지금 키우고 있는 역량이 커지면 원가가 줄어들까. DTC 코드 같은 선제적 관리가 원가를 얼마나 줄여 줄 수 있을까. 기술적 법제화는 어디까지 가야 할까. 그럼에도 발표자는 전기차 중심의 자율주행 시대에는 개인에게 묶인 자동차 상품이 아니라 서비스와 인프라를 사용하는 시대가 온다고 봤다.\n시작은 업무 자동화였고, 그것이 AX로 이어지면서 회사의 사업 방향과 비전을 새로 그리고 있다. 발표자는 오늘 보여 준 것이 정확히 5월부터 10월까지의 이야기이며, 이 교육 과정이 아니었으면 시작조차 못 했을 일이라고 말하며 발표를 마쳤다.",
+        list: [
+          "<b>구독 수요</b>, 기술 진부화가 빨라지면 정말 장기 대여 대신 구독할까",
+          "<b>반납의 유연성</b>, 양날의 검. 지금 키우는 역량이 커지면 원가가 줄어들까",
+          "<b>선제적 관리의 효과</b>, DTC 코드 기반 관리가 원가를 얼마나 줄여 줄까",
+          "<b>법제화</b>, 기술적 법제화는 어디까지 가야 할까"
+        ],
+        quote: "시작은 업무 자동화였습니다. 거기서 시작한 업무 자동화가 AX로 이어졌고, 저희 회사의 사업 방향과 사업 비전을 새롭게 그리고 있습니다."
+      }
+    ],
+    qna: [
+      {
+        q: "이렇게까지 업무 자동화를 적극적으로 도입하고 있을 줄은 예상하지 못했다. 데이터를 많이 수집하고 있는데 개인정보가 노출된 상태로 있을 텐데 어떻게 관리하나? 나중에 검색할 때 원본 데이터가 그대로 보이는지, 비식별화 작업은 어떻게 처리하고 있나?",
+        a: "회사가 B2B라 실제 고객 정보는 피플카, 카카오 모빌리티, 현대자동차가 갖고 있고, 회사는 차량 번호 기준의 운행 기록과 차량 관련 데이터만 처리한다. 그럼에도 차량 번호에 대한 비식별화 작업을 준비하려 하고 있으며, 어려운 과제인 것은 맞다. 지금은 로컬 PC에서 회사 메인 서버로 데이터가 올라가게 하고 있는데, 이 과정을 정비하는 것이 다음에 해야 할 굉장히 중요한 과제라고 생각한다."
+      },
+      {
+        q: "우리가 앞으로 나아갈 미래를 보여 주는 것 같아 놀랍고 좋았다. 다만 요즘 시큐리티 문제가 가장 크게 대두되고 있어 걱정된다. 바이브 코딩은 빨리 구현할 수 있는 것이 장점이지만 검증이나 나중에 코드가 얽히는 문제에는 취약할 수 있으니 조심하고, AI CEO 과정에서도 그쪽을 보강하면 좋겠다.",
+        a: "별도 답변 없이 코멘트로 마무리됐다."
+      },
+      {
+        q: "감사는 교육을 계기로 조직 혁신을 이끈 송 대표가 받아야 한다. 이 짧은 시간에 이렇게 변한다는 것이 놀랍고, 조직의 리더가 바뀌는 것이 조직 혁신의 가장 빠르고 효율적이고 일관된 길이라는 생각을 더 굳히게 됐다.",
+        a: "발표자는 전날 있었던 일화로 화답했다. 위탁 운영 차량의 데이터는 차량 명의를 가진 고객사의 것이라, 차량 데이터를 원하는 고객사가 직접 렌탈업을 하지 않고도 쓸 수 있도록 렌탈 오퍼레이션을 대신하는 서비스를 만들고 싶었다. 마침 깃허브에 리버스 엔지니어링 MCP가 화제가 되자, 발표 초반에 변화가 가장 느리다고 했던 DX 그룹에서 먼저 타깃으로 삼은 해외 사이트 등을 스터디해 다음 달 말까지 1차 사이트를 만들어 보겠다고 나섰다. DX 그룹까지 바뀌면 회사 전체가 바뀌지 않겠느냐는 것이다."
+      }
+    ]
+  },
+  {
+    no: 18,
+    name: "신성섭",
+    affil: "한울회계법인 · 대표이사",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 19,
+    name: "용민제",
+    affil: "M커뮤니케이션(가칭)",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 20,
+    name: "이원희",
+    affil: "",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 21,
+    name: "이은상",
+    affil: "JKL파트너스 · CIO",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 22,
+    name: "이재광",
+    affil: "SK브로드밴드 · 경영자문위원",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 23,
+    name: "이준수",
+    affil: "한국금융연수원 · 원장",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 24,
+    name: "이철민",
+    affil: "VIG Partners · 대표",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 25,
+    name: "정인수",
+    affil: "동인기연 · 대표이사",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 26,
+    name: "정인우",
+    affil: "이노바 · 대표이사",
+    topic: "공장에서 소비자의 거실까지: B2B 알루미늄 제조기업의 AI 기반 ERP, 그리고 B2C 체험 견적 플랫폼",
+    summary: "1986년 안산에서 시작한 알루미늄 압출·창호 제조사 이노바가 ABC 과정 6개월 동안 진행한 AI 전환으로, 소비자가 아파트 도면이나 집 사진으로 창호가 달린 모습을 3D로 체험하고 견적을 요청하는 플랫폼의 첫 프로토타입을 시연하고, 전환 3개월 차인 AI 기반 ERP의 수주 근거 축적, 부자재 자동 매칭, 비전 AI 입출고, 카탈로그 상담과 보고서 자동화를 공개한 발표.",
+    tags: ["건축자재·창호", "AI 기반 ERP", "3D 체험·월드 모델", "비전 AI", "제조 AX"],
+    links: [
+      { label: "발표 슬라이드 (PDF)", url: "slides/26.pdf" },
+      { label: "속기록", url: "transcripts/26.html" },
+      { label: "중간발표", url: "https://kdtfintech.github.io/ABC_5_midterm/archive5.html#26" }
+    ],
+    highlights: [
+      "창호는 큰 금액의 구매인데도 소비자는 카탈로그 사진과 인테리어 업체 추천에 기대 결정한다는 문제에서 출발해, 체험과 견적 요청은 플랫폼, 상담·실측·계약은 사람, 수주 이후 생산·입출고는 AI ERP가 맡는 구조를 설계",
+      "중간발표 때 계획이던 체험 플랫폼을 흐름 확인용 첫 프로토타입으로 시연. 아파트를 평수대로 검색해 세대 전체 3D 모델에서 틸트 앤 턴·슬라이딩 창을 열고 닫아 보고, 집 사진 한 장을 월드 모델(World Labs)로 방 전체 3D로 변환",
+      "AI 기반 ERP는 구축을 마치고 전환 3개월 차. 자동화 6개 영역 중 수주 근거 자료 축적, 도면 학습 기반 부자재 자동 매칭, 비전 AI 단면 학습, 카탈로그 AI 상담·보고서·리드타임 분석을 실제 화면으로 공개하고, 2029년 AI 기반 자동화 공장을 목표로 제시",
+      "심사위원: 보안은 작은 모델을 내부에서 돌려 해결하고, 디지털 트윈은 경쟁사가 쉽게 따라오니 고객 취향·채광 같은 컨텍스트와 선택 데이터로 차별화하며, 인테리어 업체 제휴와 핵심 실험 조직을 갖추라"
+    ],
+    scenes: [
+      {
+        title: "출발점: 38년 알루미늄 제조사가 고른 AI 전환의 두 갈래",
+        text: "이노바는 1986년 안산에서 시작해 38년 동안 알루미늄을 다뤄 온 B2B 제조 회사다. 알루미늄을 압출하고 도장하고 단열 가공을 하며, 주력은 건축 외장재인 알루미늄 창호와 커튼월이다. 아파트로 보면 계단창, 실외기실의 시스템 루버, 공용부에 들어가는 커튼월 자재가 주력 제품이다. 사내에는 이노바 AI 센터를 만들었다.\n발표자는 이날 보여줄 내용 대부분이 ABC 5기 과정을 거치며 만들어 온 결과물이라고 밝혔다. AI 전환은 크게 두 가지다. 하나는 고객 접점으로, 소비자가 자기 집에 창호가 설치된 모습을 미리 보고 견적을 요청하는 체험 플랫폼이며 아직 준비 단계다. 다른 하나는 운영 혁신으로, AI 기반 ERP에 발주, 도면, 수량, 카탈로그 분석 같은 반복 업무를 하나씩 맡기는 것이다. 이쪽은 구축을 마치고 실제로 전환한 지 약 3개월이 됐다.",
+        facts: [
+          { num: "1986년", label: "안산에서 창업, 38년간 알루미늄 압출·창호 B2B 제조" },
+          { num: "2가지", label: "AI 전환 과제: 고객 접점(체험 견적 플랫폼) · 운영 혁신(AI ERP)" },
+          { num: "3개월", label: "AI 기반 ERP로 실제 전환한 기간" },
+          { num: "6가지", label: "AI ERP에서 자동화하고 있는 업무 영역" }
+        ]
+      },
+      {
+        title: "체험 견적 플랫폼: 우리 집에 달린 모습을 보고 나서 견적을 묻는다",
+        text: "창호는 꽤 큰 금액의 구매인데도 소비자는 여전히 카탈로그 사진을 보거나 인테리어 업체의 추천을 받아 안목으로 결정해야 하는 경우가 많다. 그래서 소비자가 가장 현실적으로 창호를 체험할 수 있는 공간을 만들자는 데서 플랫폼이 시작됐다. 한 줄로 말하면 '우리 집에 달린 모습을 보고 나서 견적을 묻는다'이다.\n발표자는 소비자의 체험 경로를 둘로 나눴다. 신축이거나 도면이 비교적 최근에 업데이트된 아파트는 이사 갈 집이나 지금 사는 단지를 검색하면 이노바 창호를 매칭해 거실·침실·발코니 창 전체를 한 번에 체험한다. 도면이 없는 경우가 많은 구축 아파트, 빌라, 단독주택은 바꾸고 싶은 공간을 스마트폰으로 직접 찍어 제품과 색상을 바꿔 가며 본다. 체험과 견적 요청까지는 플랫폼이 담당하고, 요청이 들어오면 사람이 응대하며, 실측과 계약은 사람의 일로 남겨 두었다. 수주가 확정되면 플랫폼에서 자동 산출된 물량이 그대로 이노바 AI ERP로 넘어가도록 연결할 계획이다.",
+        list: [
+          "<b>신축·최근 도면이 있는 아파트</b>, 단지를 검색하면 이노바 창호를 매칭해 거실·침실·발코니 창 전체를 한 번에 체험",
+          "<b>구축 아파트·빌라·단독주택</b>, 도면이 없으니 스마트폰으로 직접 촬영해 제품과 색상을 바꿔 가며 확인",
+          "<b>수주 이후 연결</b>, 플랫폼에서 산출된 물량이 그대로 이노바 AI ERP로 넘어가도록 설계(계획)"
+        ]
+      },
+      {
+        title: "중간발표 이후: 믿음으로 시작한 계획이 첫 프로토타입이 되기까지",
+        text: "중간발표 때 발표자는 집 사진 한 장에 설계도 기반으로 창을 합성하는 7단계 파이프라인과 3개년 로드맵을 제시했고, 발표 화면은 시뮬레이션이라 기말에 실제 작동 데모로 바꾸겠다고 했다. 당시 심사위원은 완벽하게 만들기보다 파일럿을 빨리 돌려 보라고, 같은 단지처럼 한 번 구축된 데이터는 재사용해 비용을 줄이라고 조언했다.\n최종발표에서 발표자는 당시에는 최종발표까지 해낼 수 있다는 믿음이 없었다고 털어놓았다. 다만 AI의 진보와 성장성을 보면 1~2년 안에 가상에서 현실적인 경험을 할 수 있는 공간을 만들 수 있다고 믿고 시작했고, 수업에서 새 도구에 대한 강의를 듣던 무렵 직접 해 보니 윤곽이 나와 만들어 봤다고 했다. 결과물은 흐름을 확인하기 위한 최초의 프로토타입으로, 아파트 도면 검색 경로가 새로 생겼다. 아직 실제 제품이 들어가지 않았고 견적도 연동되지 않았으며, 발표자는 소비자가 어떤 경험을 하게 될지에 초점을 맞춰 달라고 했다.",
+        table: {
+          head: ["항목", "중간발표 (2026. 8)", "최종발표 (2026. 10. 17)"],
+          rows: [
+            ["체험 플랫폼", "사진 한 장 합성 7단계 파이프라인 설계, 발표 화면은 시뮬레이션", "흐름 확인용 첫 프로토타입 시연: 도면 기반 3D 체험, 사진 적용, 월드 모델로 방 전체 3D 변환"],
+            ["체험 경로", "고객이 집 사진을 찍어 합성 (심사위원이 단지 데이터 재사용 제안)", "신축·최근 아파트는 단지·평수 검색, 구축·빌라·단독은 사진 촬영으로 이원화"],
+            ["견적 이후", "견적부터 생산·시공·A/S까지 데이터가 이어지는 구조 설계", "AI 기반 ERP 구축 완료, 전환 3개월 차. 플랫폼 물량의 ERP 연결은 계획 단계"],
+            ["일정", "2028년 자체 브랜드 출시 목표, 3개년 로드맵", "2027년 2분기 메인 창호 개발 완료와 플랫폼 출시, 2029년 3분기 자동화 공장 신설"]
+          ]
+        }
+      },
+      {
+        title: "시연 1: 아파트 도면에서 세대 전체를 3D로 열고 닫아 보다",
+        text: "발표자가 실험용으로 직접 만든 사이트의 왼쪽에는 '아파트 도면 체험하기'가 있다. 내가 사는 아파트나 이사 가고 싶은 곳을 검색해 평수대로 도면을 찾고, '세대 전체 3D'로 들어가면 3D 모델이 나온다. 화면에는 어떤 제품이 들어가는지, 거기에 쓰이는 하드웨어가 무엇인지, 색상과 확대할 부분이 정리돼 있다.\n가장 큰 방인 거실을 예로 들었다. 틸트 앤 턴 창을 고르고 색상을 정한 뒤 하드웨어를 블랙으로 하면, 그 창이 실제로 열리고 닫히는 모습이 재생된다. 지금 구현된 모션은 열고 닫기뿐이다. 슬라이딩 창으로 바꾸면 슬라이딩 방식으로 개폐되고, 같은 방식으로 다른 방들도 시연할 수 있다."
+      },
+      {
+        title: "시연 2: 사진 한 장과 월드 모델",
+        text: "두 번째 경로는 직접 찍은 사진이다. 발표자는 인터넷에서 가져온 샘플 사진에 앵글을 맞춰 창을 적용하는 과정을 보여주고, 지금 수준은 이 정도지만 1~2년이면 훨씬 현실적인 경험이 가능할 것이라고 봤다.\n발표 자료를 만들던 이틀 전, 더 현실적인 기능을 넣고 싶어 AI에게 유료 API를 한번 써 보라고 프롬프팅했더니 수업 시간에 들었던 월드 모델 기반의 월드랩스(World Labs)를 추천했다. 비용이 1.8달러라고 해서 그 정도는 투자해 보겠다며 만들었고, 업로드한 사진 한 장을 바탕으로 방 전체를 3D로 만들어 그 안에서 체험할 수 있게 했다. 발표자는 창문뿐 아니라 인테리어 업종 전반에서 월드 모델을 유의미하게 쓸 수 있겠다고 느꼈다고 했다.",
+        quote: "지금 수준은 이 정도인데, 제가 봤을 때는 1~2년이면 훨씬 더 현실적인 경험을 할 수 있다고 생각합니다."
+      },
+      {
+        title: "역할 분담: 가운데는 사람이, 앞뒤는 AI가 받친다",
+        text: "발표자는 방금 본 흐름을 역할별로 정리했다. 체험과 견적은 플랫폼이, 상담·실측·계약은 사람이, 수주 이후 생산과 입출고는 AI ERP가 맡는다. 가장 중요하게 보는 것은 가운데 부분이다. AI가 사람을 대신하기보다, 고객을 만나고 신뢰를 쌓는 일은 사람에게 맡기고 그 앞뒤 과정을 AI가 받쳐 주는 구조로 설계했다는 것이다.",
+        flow: [
+          { t: "플랫폼", s: "체험과 견적 요청, 도면 3D·사진 기반 미리보기" },
+          { t: "사람", s: "상담 · 실측 · 계약, 고객을 만나고 신뢰를 쌓는 일" },
+          { t: "AI ERP", s: "수주 이후 생산과 입출고" }
+        ]
+      },
+      {
+        title: "AI ERP 1: 사람의 판단과 근거 자료를 짝으로 쌓는다",
+        text: "운영 혁신의 중심인 AI 기반 ERP는 구축을 마치고 실제로 갈아탄 지 3개월 정도 됐고, 지금은 회사 입맛에 맞춰 수정하고 개선하는 중이다. 한 번에 다 바꾸기보다 사람이 하던 일을 하나씩 순차적으로 AI에 맡기는 방식이며, 자동화 영역 6가지 중 4가지를 실제 화면으로 보여줬다.\n첫째는 수주 등록이다. 지금은 사람이 발주서를 직접 보고 입력하지만, 그때 견적서 PDF, 고객과 주고받은 카톡·메일 캡처, 참고 도면, 캐드 파일, 원자재 산출 엑셀 등 6개 정도의 관련 자료를 함께 올린다. 사람이 판단해 입력한 결과와 그 근거 자료가 짝으로 쌓이는 셈이고, 이 데이터가 쌓이면 나중에는 발주서만 올려도 AI가 정확하게 기입해 줄 것으로 본다. 둘째는 이미 작동 중인 도면 학습이다. 압출 제품 몇 개를 등록하면 AI가 함께 생산해야 하는 단열재나 부자재까지 매칭해 추가로 입력한다. 고객이 빠뜨린 품목을 역으로 제안하는 것이어서 매출로 이어지고, 같이 만들어야 할 것을 같이 만드니 납기에도 도움이 된다.",
+        list: [
+          "<b>수주 등록 근거 축적</b>, 발주서 입력 시 견적서 PDF·카톡·메일 캡처·참고 도면·캐드 파일·원자재 산출 엑셀 등 6개 정도를 함께 첨부",
+          "<b>목표</b>, 판단 결과와 근거가 짝으로 쌓이면 발주서만 올려도 AI가 자동으로 정확하게 기입",
+          "<b>도면 학습 기반 부자재 매칭</b>, 압출 제품을 등록하면 함께 생산할 단열재·부자재를 AI가 추가 입력, 누락 품목 역제안과 납기 개선"
+        ]
+      },
+      {
+        title: "AI ERP 2: 야적장의 수백 종 단면을 비전 AI로 센다",
+        text: "야적장에는 수백 종의 제품 단면이 섞여 있어서 입출고 때마다 사람이 팔레트 앞에서 제품을 확인하고 하나하나 셌다. 이노바는 비전 AI 공급 업체와 함께 AI 바우처 사업으로 단면을 레이블링하고 모델을 학습시키는 단계에 있다. 겹쳐 있는 단면을 구분해 검출하고, 닫힌 선을 모아 외곽과 중공부를 나눈 뒤 품번과 짝짓는 작업을 모두 사람이 일일이 레이블링하고 있다.\n그 결과로 전 제품 단면을 치수와 단면적 기준으로 정리한 라이브러리가 만들어졌다. 앞으로는 특수 카메라로 팔레트를 양쪽에서 촬영하면 품종과 수량이 그대로 입고·출고 처리되고 품질 관리도 함께 이뤄지는 것이 목표다.",
+        flow: [
+          { t: "단면 검출", s: "겹쳐 있는 단면을 하나씩 구분" },
+          { t: "외곽·중공부 분리", s: "닫힌 선을 모아 외곽과 중공부를 나눔" },
+          { t: "품번 매칭", s: "사람이 일일이 레이블링해 품번과 짝지음" },
+          { t: "단면 라이브러리", s: "전 제품 단면을 치수와 단면적으로 정리" },
+          { t: "양쪽 촬영 입출고", s: "특수 카메라로 팔레트를 찍으면 품종·수량 입출고와 품질 관리" }
+        ]
+      },
+      {
+        title: "AI ERP 3: 카탈로그 상담, 보고서, 리드타임 분석",
+        text: "업계에서는 아직 도면을 책으로 보거나 캐드 파일을 하나씩 열어 사람이 일일이 찾는 경우가 많다. 이노바 카탈로그 AI 상담에서 고객이 특정 제품의 사이즈를 찾아 달라고 하자, AI는 그 사이즈는 없고 비슷한 사이즈가 있다며 도면과 함께 제안했다. 발표자는 없는 것을 있다고 하지 않고 대안을 제시하는 점이 고객에게 신뢰를 준다고 봤다.\nERP 시스템에 '특정 업체의 수주 진행 상황 보고서를 작성해 줘'라고 적자 30건을 조회해 제출용 보고서를 PDF와 엑셀로 만들어 줬고, '리드타임이 길어지는데 어디서 막히는 거야'라고 묻자 3개월 데이터를 분석해 지연 구간을 짚어 줬다. 예전에는 직원이 데이터를 가져와 보고서를 만드는 데 며칠씩 걸리던 일이다. 매출 증대나 매입 절감에 대한 자문도 같은 방식으로 받아 보고 있다.",
+        list: [
+          "<b>카탈로그 AI 상담</b>, 요청한 사이즈가 없으면 없다고 답하고 비슷한 사이즈를 도면과 함께 제안",
+          "<b>수주 진행 보고서</b>, 한 줄 요청으로 30건을 조회해 제출용 PDF·엑셀 보고서 생성",
+          "<b>리드타임 분석</b>, 3개월 데이터를 분석해 어디서 늦어지는지 짚어 줌",
+          "<b>경영 자문</b>, 매출 증대·매입 절감에 대한 자문도 같은 방식으로 활용"
+        ]
+      },
+      {
+        title: "솔직한 고민 네 가지: 보안, 범위, 뼈대, 사람",
+        text: "발표자는 6개월의 결과 뒤에 남은 고민을 숨기지 않았다. 첫째는 보안이다. LLM을 쓰는 이상 발주서, 도면, 거래처 정보가 외부 모델을 거치게 되는데 이것을 어떻게 지킬지가 고민이다. 둘째는 범위다. 제조에서 AI 효과를 제대로 보려면 업무 일부가 아니라 처음부터 끝까지 AI 기반으로 갖춰야 극대화된다고 보며, 지금은 그 길로 가는 과정이다. 셋째는 뼈대다. 이 시스템들은 개발자가 아닌 기획자인 발표자가 클로드 같은 AI를 기반으로 만든 것이어서, 사용이 늘고 고도화될수록 백엔드가 어떻게 짜여 있는지에 대한 의문과 언젠가 무너질 수 있다는 걱정이 있다. 넷째는 사람이다. 현장 직원들이 AI를 도구로 받아들이고, 사람이 할 일과 AI에 맡길 일의 경계를 계속 조정해 가야 한다.",
+        list: [
+          "<b>보안</b>, 발주서·도면·거래처 정보가 외부 LLM을 거칠 때 어떻게 지킬 것인가",
+          "<b>범위</b>, 업무 일부가 아니라 처음부터 끝까지 AI 기반으로 갖춰야 효과가 극대화",
+          "<b>뼈대</b>, 기획자가 클로드 등으로 만든 시스템이 고도화될 때 백엔드 구조에 대한 불안",
+          "<b>사람</b>, 현장 직원이 AI를 도구로 받아들이고 사람과 AI의 경계를 계속 조정"
+        ]
+      },
+      {
+        title: "로드맵: 견적에서 공장까지 하나의 AI 시스템으로",
+        text: "네 가지 고민을 안고 세운 로드맵은 2029년까지 이어진다. 2027년 2분기에는 메인 창호 제품 개발을 마치고 체험 견적 플랫폼을 당사 제품으로 출시한다. 이때 견적이 ERP 수주로 바로 이어지게 해서, 처음부터 끝까지 AI 기반으로 잇는 범위의 첫 단추를 끼운다. 2027년 4분기에는 AI ERP에 2년 치 데이터가 쌓이면 비용 절감 등에 AI를 적극적으로 활용한다. 2028년에는 지원 사업으로 설비를 전면 DX화해 수주부터 설비까지 하나의 AI 시스템으로 갖춘다. 마지막으로 2029년 3분기에는 AI 기반 자동화 가공·조립 공장을 신설한다. 사람은 기획하고 관리하며, 반복은 AI와 설비가 맡는 공장이 목표다.",
+        flow: [
+          { t: "2027년 2분기", s: "메인 창호 제품 개발 완료, 체험 견적 플랫폼을 당사 제품으로 출시, 견적→ERP 수주 연결" },
+          { t: "2027년 4분기", s: "AI ERP에 2년 치 데이터 축적, 비용 절감 등에 AI 적극 활용" },
+          { t: "2028년", s: "지원 사업으로 설비 전면 DX화, 수주부터 설비까지 하나의 AI 시스템" },
+          { t: "2029년 3분기", s: "AI 기반 자동화 가공·조립 공장 신설, 반복은 AI와 설비가 담당" }
+        ]
+      },
+      {
+        title: "느낀 점: 버블이 아니라 실제로 일어나고 있는 산업혁명",
+        text: "발표자는 세 가지 느낀 점으로 마무리했다. 제조업에서 AI는 선택이 아니라 필수다. 팔레트 앞에서 수량을 세고, 도면을 한 장씩 정리하고, 한 줄씩 ERP에 입력하는 일은 다 AI가 해야 한다. AI는 사람을 대체하는 것이 아니라 더 효율적으로 일하게 만든다. 반복을 AI에게 넘기면 사람은 기획하고 판단하고 고객을 만나는 일로 올라가고, 회사가 필요로 하는 인재상도 달라진다. 그리고 데이터가 쌓이는 구조의 산업이라면 AI는 무조건 효과적이다. 제조업은 수주부터 생산 기록까지 매일 데이터가 쌓이는 산업이고, 쌓이는 구조를 먼저 만들면 AI는 반드시 따라온다.\n과정에 처음 들어왔을 때는 AI가 버블이라고도 많이 생각했고 모두가 AI를 이야기하는 분위기에 의문을 품었지만, 지금은 실제로 일어나고 있는 산업혁명이라고 본다고 했다.",
+        quote: "아직 가는 중이고 고민도 정말 많지만, 방향은 분명하다고 생각합니다."
+      }
+    ],
+    qna: [
+      {
+        q: "B2C 다각화와 조직 구조 변화에 AI를 쓰고, 새로 나온 모델들로 데모까지 보여준 점, 보안 등 과제와 로드맵까지 정리한 점이 좋았다. 지금은 상용 모델을 쓰고 있는데, 요즘은 내려받아 쓸 수 있는 작은 모델이 많으니 기업 차원에서 작은 GPU 클러스터를 사서 내부에서 돌려도 이 정도는 할 수 있을 것이다. 그러면 데이터가 외부로 나가지 않아 앞으로 개발에도 유리하다.",
+        a: "지금은 완전 초기 단계라 모든 것을 클라우드로 하고 있지만 그 부분에서 분명히 해소가 될 것 같다. 대기업들도 그렇게 하고 있으니, 세팅이 되면 인력과 시간을 더 투자해 그쪽으로 방향을 틀어 보겠다."
+      },
+      {
+        q: "체험 플랫폼은 일종의 디지털 트윈이라 경쟁사가 금방 따라올 수 있는 기술로 보인다. AI에 줄 때 중요한 것은 컨텍스트다. 고객의 카톡 내용, 성향, 실제 취향을 반영하고, 남향인지 동향인지 햇빛이 어떻게 드는지에 맞춰 색까지 넣으면 다른 곳과 차별화된 추천이 될 것이다. AI를 도구가 아니라 나보다 나은 지성으로 보면, 얼마나 많은 정보를 주느냐에 따라 답의 퀄리티가 달라진다.",
+        a: "발표자의 답변 없이 코멘트로 끝나고 다음 심사위원 발언으로 넘어갔다."
+      },
+      {
+        q: "사람들은 고르라고 하면 귀찮아하니, 동의한 고객의 정보로 선호를 뽑아 사진 몇 장만 올리면 AI가 전체 모습을 재현하고 먼저 탑 3를 제안하게 하라. 고객의 최종 선택이 레이블드 데이터가 돼 학습이 고도화되면 경쟁력이 저절로 쌓이는 플랫폼이 된다. 고객 정보는 지키면서 취향만 학습하고, 창호를 넘어 인테리어 업자들과 제휴하되 데이터와 고객 접점으로 협상력을 가지며, 정보 격차가 가장 심한 인테리어 시장에서 '속지 않고 제값에 한다'는 신뢰를 주면 사업이 크게 커질 것이다.",
+        a: "감사 인사와 함께, 제조업을 이끌고 AI 혁신을 하기 위해 ABC 5기에 다니며 많은 도움을 받고 배웠다고 답했다."
+      },
+      {
+        q: "고객이 AI를 통해 얻는 경제적 이점, 그리고 자동화·표준화로 생산 단가가 떨어지는 효과를 가격에 반영해 보여주라. 또 이런 AI 프로젝트를 하려면 기획하고 실험하고 빠르게 적용할 조직이 있어야 하는데, 그런 구조의 TF팀이 있는가?",
+        a: "AI 센터를 설립했지만 센터장이 퇴사해 지금은 발표자 혼자 진두지휘하고 있으며, 한두 명씩 채용할 계획이다. 심사위원은 이 드라이브를 이어 가려면 핵심이 되는 실험 조직이 방점이 될 것이라고 덧붙였다."
+      }
+    ]
+  },
+  {
+    no: 27,
+    name: "조용준",
+    affil: "안다아시아벤처스 · 대표이사",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 28,
+    name: "조희정",
+    affil: "유창",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 29,
+    name: "최혜미",
+    affil: "엘리스 · CFO",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  },
+  {
+    no: 30,
+    name: "한경민",
+    affil: "한경기획 · 대표",
+    topic: "",
+    summary: "",
+    tags: [],
+    links: [],
+    highlights: [],
+    scenes: [],
+    qna: [],
+    placeholder: true
+  }
+];
+
+// 아직 채워지지 않은 발표자 자리 (2번~30번)
+
+/* ---------- 표 렌더링 ---------- */
+const tbody = document.getElementById("tbody");
+const noResult = document.getElementById("noResult");
+
+const LINK_ICON = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7L12.5 18.5"/></svg>`;
+
+function sortByName(list) {
+  return [...list].sort((a, b) => a.name.localeCompare(b.name, "ko"));
+}
+
+const DISPLAY_NO = {};
+sortByName(PRESENTATIONS).forEach((p, i) => { DISPLAY_NO[p.no] = i + 1; });
+
+function renderTable(list) {
+  tbody.innerHTML = list.map(p => {
+    if (p.placeholder) {
+      return `
+        <tr class="empty" data-no="${p.no}">
+          <td class="col-no">${String(DISPLAY_NO[p.no] || p.no).padStart(2, "0")}</td>
+          <td class="col-name">${p.name}</td>
+          <td class="col-topic"><span class="badge-pending">정리 예정</span></td>
+          <td class="col-tags"></td>
+          <td class="col-links"></td>
+        </tr>`;
+    }
+    return `
+      <tr data-no="${p.no}">
+        <td class="col-no">${String(DISPLAY_NO[p.no] || p.no).padStart(2, "0")}</td>
+        <td class="col-name">${p.name}${p.award ? `<span class="award-badge">우수상</span>` : ""}${p.affil ? `<span class="sub">${p.affil}</span>` : ""}</td>
+        <td class="col-topic">
+          <span class="t">${p.topic}</span>
+          ${p.summary ? `<span class="summary">${p.summary}</span>` : ""}
+        </td>
+        <td class="col-tags"><div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div></td>
+        <td class="col-links">${p.links.map(l => `
+          <a class="mini-link" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${LINK_ICON}${l.label.replace(" (PDF)", "")}</a>`).join("")}
+        </td>
+      </tr>`;
+  }).join("");
+  noResult.style.display = list.length ? "none" : "block";
+}
+
+/* ---------- 검색 ---------- */
+const searchInput = document.getElementById("searchInput");
+searchInput.addEventListener("input", () => {
+  const q = searchInput.value.trim().toLowerCase();
+  if (!q) return renderTable(sortByName(PRESENTATIONS));
+  renderTable(sortByName(PRESENTATIONS).filter(p =>
+    p.name.toLowerCase().includes(q) ||
+    p.topic.toLowerCase().includes(q) ||
+    (p.summary || "").toLowerCase().includes(q) ||
+    p.tags.some(t => t.toLowerCase().includes(q))
+  ));
+});
+
+/* ---------- 상세 패널 ---------- */
+const overlay = document.getElementById("overlay");
+const modalWrap = document.getElementById("modalWrap");
+const panel = document.getElementById("panel");
+const detailScroll = document.getElementById("detailScroll");
+
+function renderScene(s, i) {
+  let inner = `
+    <div class="scene-no">SCENE ${i + 1}</div>
+    <h3>${s.title}</h3>
+    ${s.text ? `<p>${s.text}</p>` : ""}`;
+
+  if (s.flow) {
+    inner += `<div class="flow">${s.flow.map((f, idx) => `
+      ${idx > 0 ? `<span class="flow-arrow">→</span>` : ""}
+      <div class="flow-step">
+        <span class="fs-num">${idx + 1}</span>
+        <span class="fs-title">${f.t}</span>
+        ${f.s ? `<span class="fs-sub">${f.s}</span>` : ""}
+      </div>`).join("")}
+    </div>`;
+  }
+  if (s.facts) {
+    inner += `<div class="facts">${s.facts.map(f => `<div class="fact"><b>${f.num}</b><span>${f.label}</span></div>`).join("")}</div>`;
+  }
+  if (s.list) {
+    inner += `<div class="check-list">${s.list.map(item => `<div class="check-item"><span>${item}</span></div>`).join("")}</div>`;
+  }
+  if (s.table) {
+    inner += `
+      <div class="stable-wrap"><table class="stable">
+        <thead><tr>${s.table.head.map(h => `<th>${h}</th>`).join("")}</tr></thead>
+        <tbody>${s.table.rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody>
+      </table></div>`;
+  }
+  if (s.quote) {
+    inner += `<div class="quote">“${s.quote}”</div>`;
+  }
+  return `<div class="scene">${inner}</div>`;
+}
+
+function openDetail(no) {
+  const p = PRESENTATIONS.find(x => x.no === no);
+  if (!p) return;
+
+  document.getElementById("dNo").textContent = `NO. ${String(DISPLAY_NO[p.no] || p.no).padStart(2, "0")}`;
+  document.getElementById("dName").innerHTML = p.name + (p.award ? '<span class="award-badge">우수상</span>' : "");
+  document.getElementById("dAffil").textContent = p.affil || "";
+  document.getElementById("dTopic").textContent = p.topic;
+
+  document.getElementById("dLinks").innerHTML = p.links.map(l => {
+    const isPdf = /\.pdf(\?|#|$)/i.test(l.url);
+    return `<button class="link-pill" data-url="${l.url}" data-label="${l.label}" data-pdf="${isPdf}">${LINK_ICON}${l.label}</button>`;
+  }).join("");
+
+  document.getElementById("dHighlights").innerHTML = (p.highlights && p.highlights.length) ? `
+    <div class="highlights">
+      <div class="hl-title">한눈에 보기</div>
+      <ul>${p.highlights.map(h => `<li>${h}</li>`).join("")}</ul>
+    </div>` : "";
+
+  const body = document.getElementById("dBody");
+  let html = "";
+
+  if (p.scenes && p.scenes.length) {
+    html += `
+      <div class="storyboard">
+        <div class="sb-label">Storyboard</div>
+        ${p.scenes.map(renderScene).join("")}
+      </div>`;
+  }
+
+  if (p.qna && p.qna.length) {
+    html += `
+      <div class="qna">
+        <div class="qna-label">Q&amp;A, 질의응답</div>
+        ${p.qna.map(item => `
+          <div class="qa-item">
+            <div class="q"><span class="qa-mark">Q</span><span>${item.q}</span></div>
+            <div class="a"><span class="qa-mark">A</span><span>${item.a}</span></div>
+          </div>
+        `).join("")}
+      </div>`;
+  }
+
+  if (!html) html = `<div class="empty-detail">아직 정리된 발표 내용이 없습니다.</div>`;
+  body.innerHTML = html;
+
+  closeViewer();
+  detailScroll.scrollTop = 0;
+  overlay.classList.add("open");
+  modalWrap.classList.add("open");
+  panel.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeDetail() {
+  closeViewer();
+  overlay.classList.remove("open");
+  modalWrap.classList.remove("open");
+  panel.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+/* ---------- 옆에 열리는 뷰어 (토글) ---------- */
+let currentViewer = null;
+
+function toggleViewer(url, label, isPdf) {
+  if (currentViewer === url) { closeViewer(); return; }
+  currentViewer = url;
+  document.getElementById("viewerTitle").textContent = label;
+  document.getElementById("viewerOpenNew").href = url;
+  document.getElementById("viewerBody").innerHTML = isPdf
+    ? `<object data="${url}#toolbar=1&view=FitH" type="application/pdf"><iframe src="${url}" title="${label}"></iframe></object>`
+    : `<iframe src="${url}" title="${label}"></iframe>`;
+  panel.classList.add("viewer-open");
+  document.querySelectorAll("#dLinks .link-pill").forEach(b =>
+    b.classList.toggle("active", b.dataset.url === url));
+}
+
+function closeViewer() {
+  currentViewer = null;
+  panel.classList.remove("viewer-open");
+  document.getElementById("viewerBody").innerHTML = "";
+  document.querySelectorAll("#dLinks .link-pill").forEach(b => b.classList.remove("active"));
+}
+
+tbody.addEventListener("click", e => {
+  const row = e.target.closest("tr");
+  if (row) openDetail(Number(row.dataset.no));
+});
+document.getElementById("dLinks").addEventListener("click", e => {
+  const btn = e.target.closest(".link-pill");
+  if (!btn) return;
+  toggleViewer(btn.dataset.url, btn.dataset.label, btn.dataset.pdf === "true");
+});
+document.getElementById("viewerClose").addEventListener("click", closeViewer);
+overlay.addEventListener("click", closeDetail);
+document.getElementById("btnClose").addEventListener("click", closeDetail);
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDetail(); });
+
+renderTable(sortByName(PRESENTATIONS));
+/* URL 해시로 상세 바로 열기 (예: final.html#01) */
+(function () {
+  const m = location.hash.match(/^#p?(\d+)$/);
+  if (m) openDetail(Number(m[1]));
+})();
+</script>
+</body>
+</html>
