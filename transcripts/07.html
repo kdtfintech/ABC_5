@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>속기록: 07. 노희열 · AI 에이전트를 활용한 글로벌 통합 운영 시스템 구축 방안(3개년)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --bg: #f7f7f5; --surface: #fff; --ink: #1a1a1a; --ink-soft: #55554f;
+    --ink-faint: #8f8f86; --line: #e6e6e0; --accent: #2f5d50; --accent-soft: #e8f0ed;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Pretendard", -apple-system, system-ui, sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 24px 100px; }
+  .back {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13.5px; color: var(--ink-soft); text-decoration: none;
+    border: 1px solid var(--line); background: var(--surface);
+    border-radius: 999px; padding: 7px 16px; margin-bottom: 28px;
+  }
+  .back:hover { border-color: var(--accent); color: var(--accent); }
+  .head { margin-bottom: 36px; }
+  .head .label { font-size: 12px; font-weight: 700; letter-spacing: .08em; color: var(--accent); margin-bottom: 6px; }
+  .head h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .head p { font-size: 14.5px; color: var(--ink-faint); }
+  .section-title {
+    font-size: 13px; font-weight: 700; letter-spacing: .06em; color: var(--ink-faint);
+    margin: 44px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+  }
+  .block {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px; padding: 22px 26px; margin-bottom: 14px;
+  }
+  .block .meta { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+  .block .speaker { font-size: 13.5px; font-weight: 700; }
+  .block .speaker.presenter { color: var(--accent); }
+  .block .time { font-size: 12px; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+  .block p { font-size: 15px; color: var(--ink-soft); }
+  .note {
+    font-size: 13px; color: var(--ink-faint); background: var(--accent-soft);
+    border-radius: 10px; padding: 12px 16px; margin-bottom: 28px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../final.html">← 아카이브로 돌아가기</a>
+
+  <div class="head">
+    <div class="label">TRANSCRIPT · NO. 07</div>
+    <h1>AI 에이전트를 활용한 글로벌 통합 운영 시스템 구축 방안(3개년) 발표 속기록</h1>
+    <p>노희열 (오로라월드) · 최종발표 및 질의응답 · 2026. 10. 22</p>
+  </div>
+
+  <div class="section-title">발표</div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (발표자)</span><span class="time">54:15</span></div>
+    <p>안녕하십니까, 교수님들, 여러분 안녕하십니까. 지난 중간발표 때 저희 회사에 대해 이렇게 이렇게 하겠다고 말씀드렸는데, 그때보다 크게 진보된 것은 거의 없는 것 같고 정리를 좀 더 잘한 것 같습니다. 지난번에 강의해 주시고 가르쳐 주셔서 감사합니다.<br><br>이 운영 시스템을 구축함으로써 얻는 기대 효과부터 말씀드리겠습니다. 기존에 저희가 쓰던 ERP 같은 것들은 IT 기반으로 한 35년 동안 써 온 것이고, 기반 데이터도 아마 수백만 건씩 쌓여 있습니다. 이렇게 정제되지 않은 데이터를 IT 개발로 다시 구축한다고 하니 굉장히 힘이 듭니다. 그래서 이런 것들의 라벨을 좀 정리하고, 비정형 데이터를 정형 데이터로 만드는 데 금년 1년 동안 시간을 쓰려고 노력하고 있습니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (발표자)</span><span class="time">55:41</span></div>
+    <p>이것을 해 보면 비용 절감, 회사의 생산성 향상, 매출 증대, 특히 의사결정을 빨리빨리 잘할 수 있게 됨으로써 경영학에서 이야기하는 오퍼레이셔널 엑설런스를 가질 수 있다고 생각합니다. 그것이 바로 우리가 흔히 이야기하는 비교 우위입니다. 거기서 더 나아가 우리만 갖는 경쟁 우위를 가질 수 있다면, 한국이 낳은 지속 가능한, 세계에서 잘 나가는 회사가 되지 않을까 생각합니다.<br><br>교수님들께서 저희 회사를 좀 아셔야 할 것 같아 소개드리겠습니다. 저희는 1980년대 초에 설립해서 올해 10월 1일로 45년이 됐습니다. 제가 어린 나이에 불속에 들어가서 그때 살아남았습니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (발표자)</span><span class="time">56:52</span></div>
+    <p>열심히 해서 여기까지 왔습니다. 저희 회사의 미션은 웃음과 행복이라는 선물을 글로벌 고객과 임직원, 그리고 이 사회에 선사한다는 것이고, 세계를 선도하는 캐릭터, 토이와 콘텐츠 기업이 되는 것이 저희 회사의 비전입니다.<br><br>기업의 포트폴리오를 보면 일반 토이뿐만 아니라 콘텐츠, B2B와 B2C, 레저 스포츠가 있고, 인베스트먼트 법인이 있어서 M&A를 하거나 투자를 하거나 벤처 투자를 하고 있습니다. 저희 회사는 사실 국내 매출이 3% 정도밖에 안 됩니다. 전부 미국 중심, 선진국 중심이고, 제조는 중국과 인도네시아에 나간 지가 거의 30년, 35년 됐다고 보시면 됩니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (발표자)</span><span class="time">58:05</span></div>
+    <p>그리고 전 세계적으로 대리점 또는 직접 판매 네트워크를 만들어서 판매하는 자가 브랜드 판매 회사입니다. 인원 측면에서 보면 본사는 디자인 개발에 중점을 두고 있고 오퍼레이션 쪽에 한 250여 명, 선진국 판매 법인의 세일즈 스태프가 한 600여 명, 제조 쪽에 한 만여 명이 직접 고용돼 있고, 아웃소싱까지 하면 훨씬 많은 인력이 될 것입니다.<br><br>클라이언트는 B2B로, 여기 보시는 것처럼 세계적으로 유명한 백화점을 비롯해 거의 모든 곳과 거래하고 있는데 10만 이상의 커스터머가 된다고 보고 있고, B2C로는 100만 명 이상이 지금 온라인에서 저희 물건을 사지 않나 보고 있습니다. 브랜드는 여러 세그먼트에 걸쳐 중가에서 고가까지 있고, 저희는 싼 제품은 하지 않습니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (발표자)</span><span class="time">59:16</span></div>
+    <p>왜냐하면 중국 같은 경쟁자들이 싼 것을 많이 하기 때문에, 저희는 브랜드를 내세워 중고가, 프리미엄 쪽으로 하고 있다는 말씀을 드립니다. 또 노동 집약적 산업이 1990년대에 한국에서 거의 쫓겨나다시피 없어졌는데, 저는 콘텐츠와 브랜드와 디자인 중심으로 하면 된다고 생각했습니다. 그래서 95% 이상을 자기 브랜드로 하고 있습니다.<br><br>실적은 작년에 약 3,300억 원 매출에 약 440억 원의 영업이익을 냈고, 올해는 약 4,000억에서 4,200억 원 매출에 650억 원 정도의 영업이익이 날 것으로 예상하고 있습니다.<br><br>이제 문제 정의를 해 보면, 앞서 말씀드린 수많은 데이터가 분산돼 있고, ERP를 각 법인에서 각자 쓰고 있습니다. 그러다 보니 아이템 번호나 품목 명칭이 굉장히 상이합니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (발표자)</span><span class="time">1:00:31</span></div>
+    <p>그래서 이것을 정형화하는 데 1년이 소요돼야 하는데, 지금 현재 30% 정도 했습니다. 예를 들면 같은 제품이 미국 법인에서는 어떤 번호와 명칭으로 돼 있고, 본사에는 다른 번호와 명칭으로 돼 있고, 생산 공장은 또 그 나름의 방식으로 쓰니까 미스매칭이 돼서 어렵습니다. 그래서 이것을 사람이 수기로 맞추고 데이터를 저장하는 데 시간을 많이 써야 한다는 말씀을 드립니다.<br><br>말씀드린 대로 1차년도에는 아이템 마스터 같은 마스터와 트랜잭션을 통합한 글로벌 대시보드를 개발합니다. 2차년도에는 의사결정 시스템, 3차년도에는 암묵지 데이터베이스 통합을 개발해 나갑니다. 그 이후는 AX 쪽으로 가면 되지 않을까 보고 있습니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (발표자)</span><span class="time">1:01:46</span></div>
+    <p>그다음에 AI로 고객 CRM부터 판매 법인, 본사까지 대시보드가 나오게 되면 아마 굉장히 좋은 결과가 있을 것입니다. 특히 현재 미국 판매 법인에서 물류 오토메이션을 추진해, 창고 관리 시스템(WMS)을 활용하는 것이 지금 거의 완료됐다고 말씀드립니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (발표자)</span><span class="time">1:02:21</span></div>
+    <p>이것은 저희 회사의 업무 흐름인데, 플랜·두·체크·액션(PDCA) 과정으로 시장 조사, 제품 개발, 디자인, 의사결정 같은 프로세스를 거쳐 판매까지, 프론트엔드와 백엔드 전체를 총체적으로 나타낸 것이라고 보시면 됩니다. 그리고 현재 데이터 통합은 20~30% 정도 정리를 하고 있습니다.<br><br>앞서 말씀드린 것처럼 이 데이터를 하나의 아이템 번호로 통합해 아이템 마스터가 된다면 모든 정보가 쉽게 진행되지 않을까, 이것이 기본이 되어야 한다고 말씀드립니다. 예를 들어 A3011이라는 아이템 하나로 정리가 되면 전 세계적으로 아이템 정리가 잘 되고, 대시보드를 만들 때 아이템 넘버, 품목, 작지 넘버, 선적 등 어떤 항목을 넣더라도 누가 언제 어디서 무엇을 어떻게 했는지를 대시보드에 나타낼 수 있게 됩니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (발표자)</span><span class="time">1:03:28</span></div>
+    <p>예를 들어 지금 아이템을 선정하면 조회 결과가 이렇게 나오고, 어디에 어떻게 판매했는지 판매 이력이 나오고, 생산 이력이 어떻게 되는지, 재고가 어디서 어떻게 흐르는지, 그리고 그것을 AI에게 자연어로 물어봤을 때 어떻게 되는지까지 알 수 있게끔 지금 시스템을 거의 만들어 가고 있다고 말씀드립니다.<br><br>그다음은 디지털 샘플링입니다. 이것이 암묵지 부분인데 굉장히 중요합니다. 저희는 디자인 중심 회사이기 때문에 디자인을 기획하고, 이것을 3D 모델링하고, 정리한 다음 패턴을 검증하고, 다시 샘플을 제작하는 과정을 거칩니다. 이것이 현재 88.1%까지 디지털라이제이션이 됐습니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (발표자)</span><span class="time">1:04:20</span></div>
+    <p>그런데 이것이 99%가 되어야 사람의 휴먼 터치가 들어가는 정도가 되지 않을까 보는데, 거기까지 한 3년 정도 걸릴 것으로 봅니다. 그리고 2차년도에는 공정 분석, 공장의 업무 쪽으로 좀 더 깊게 들어가 보려고 생각합니다.<br><br>이것을 구축하기 위한 인원과 투자 계획은, 첫해인 금년도에는 외부 임원과 자문 교수를 모시고 비용을 집행하고, 3년까지 약 25억 원 정도 투자하는 계획을 진행했습니다. 그리고 제가 AI 에이전트, ChatGPT에게 물어봤습니다. 내가 이런 일을 이렇게 이렇게 한다, 한번 그림을 그려 봐라 했더니, 제가 볼 때 아주 만족스러운 그림을 AI가 그렸습니다. 이것은 제가 쓴 것이 아니고 AI가 그린 것입니다. 제가 설명을 다 해 주었더니 너무 정확하게 나왔습니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (발표자)</span><span class="time">1:05:26</span></div>
+    <p>그래서 본사가 중심이 되어 세계 판매 법인과 1만여 명이 일하는 생산 법인을 모두 정리할 수 있다는 말씀을 드립니다.<br><br>기대 효과 측면에서는 20% 정도의 향상을 보고 있고, 재고 관리의 효율성도 한 20~30% 늘어날 것으로 보고 있습니다. 지금은 물건이 달리기도 하고, 물건이 없기도 하고, 물건이 너무 많기도 한데, 공급 충족률도 95% 이상이 될 것이라고 생각합니다. 리드타임도 지금 5개월, 6개월 걸리고 있는데 아마 3개월, 4개월 정도로 줄 것이고, 샘플 개발도 사람이 수작업으로 10번씩 하는데 AI로 정리가 된다면 AI가 99%를 하고 사람은 1%만 수정해 주는 역할이 되지 않을까 봅니다. 의사결정은 당연히 수시로 할 수 있게 됩니다. 그래서 3년 이내에 글로벌 회사로서 매출이 1조 원 이상으로 늘어날 것 같고, 영업이익률도 현재 16% 정도인데 20% 이상으로 늘어날 것으로 생각하고 있습니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (발표자)</span><span class="time">1:06:38</span></div>
+    <p>끝으로, 여기 내용을 보시면 회사에서 쓰던 용어들로 정리가 돼 있어서 부족한 부분이 있을 텐데 이해해 주시면 고맙겠습니다. 이것을 하면서 교수님들께 감사드리고, 제가 직접 PPT를 기획하고 만들면서 오랜만에 이런 것을 직접 해 보니 재미있었습니다. 그동안 배운 것에 대해 감사하게 생각하고, 특히 제 옆에서 동기들이 제가 모른다고 열심히 가르쳐 줬는데, 컴퓨터를 잘 모르는 저에게 참 의미 있는 시간이었다고 생각합니다. AI 구축을 하면 좀 더 나은 회사로 빨리 나아가지 않을까 생각합니다. 감사합니다.</p>
+  </div>
+
+  <div class="section-title">질의응답 · 심사평</div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker">심사위원 1</span><span class="time">1:07:43</span></div>
+    <p>네, 강연 때가 기억나는데, 그때도 정말 열정적으로 설명해 주셨고 이번에도 마지막까지 회장님의 열정을 보여 주셔서 너무 감사드립니다. ERP 같은 시스템이 항상 문제인데, 굉장히 열정적으로 소개해 주셨고, 강의했던 내용보다 AI를 훨씬 더 잘 활용해 주셔서 의미가 있었습니다. 그리고 이렇게 귀여운 캐릭터를 디자인하는 일은 저도 직접 만들어 보기도 했었는데, 제 동기도 관련 스타트업을 하고 있습니다. AI를 활용해서 할 수 있는 것, 적용할 수 있는 것이 굉장히 다양하고 많은 것 같아 좋았습니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (답변)</span><span class="time">1:08:46</span></div>
+    <p>고맙습니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker">심사위원 2</span><span class="time">1:08:47</span></div>
+    <p>네, 회장님 발표 너무 재미있게 잘 들었습니다. 이렇게 큰 기업이 AX로 전환되는 게, 제가 듣기에는 생각보다 너무 빨리 된다는 생각이 들어서요. 강의안을 만들어 놓은 걸로 한 5년은 먹고살아야 하는데, 이렇게 큰 회사도 3년 계획을 짜서 정말 이렇게 움직일 수 있을 정도면, 1년만 지나도 제가 올해 가르쳤던 걸로는 못 먹고살겠구나 하는 생각이 들어 마음이 무겁습니다. 다른 한편으로는, 앞에서 다른 대표님도 말씀해 주셨지만, 이 정도 규모의 회사도 리더가 의지를 갖고 하면 이 정도 속도로 되는구나 하는 것이 엄청나게 놀랍습니다. 그리고 앞서 다른 심사위원께서도 말씀하셨지만, 서울대 교수들도 ERP로 고통받고 있는데, ERP의 비정형 데이터를 정형 데이터로 만드는 과정을 저도 정말 중요하게 생각합니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker">심사위원 2</span><span class="time">1:10:12</span></div>
+    <p>사실 AI가 적용되고, AI가 가지고 뛰어놀 수 있는 안전한 놀이터를 만들어 주려면 결국 데이터 정리를 한번 해야 하는데, 거기에 시간을 많이 배려하신 것도 훌륭한 결정이라고 생각합니다. 아까 사례로 보여 주신 것처럼 제품의 주민번호 격인 번호가 안 맞는 경우, 그냥 넣어 주면 AI는 아무런 맥락이 없으니 잘 못 맞출 텐데, 들으면서 혹시 제품 사진 같은 것이라도 활용해서 맞추거나, 제품과 연결된 다른 데이터를 가로세로로 맞춰서 추측하는 방법은 없을까 하는 생각도 들었습니다. 물론 이 과정을 진행하시는 분들이 아주 잘하고 계실 것이라 생각하고, 내년, 내후년에 어떻게 되어 있을지 많이 기대가 됩니다. 이번 기회에 뵙게 돼서 너무 반갑고, 너무너무 잘 들었습니다. 감사합니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker">심사위원 3</span><span class="time">1:11:37</span></div>
+    <p>네, 잘 들었습니다. 저도 거의 같은 소감인데, 이 정도 크기의 회사의 AX가 3년 안에 끝날 거라는 게 믿기지가 않으면서도, 요즘은 또 가능한 세상이라는 생각이 듭니다. 워낙 AI가 발달해서 대표님 스스로 의지가 있으면 시간을 엄청나게 단축할 수 있고, 불가능하지 않거든요. 저는 주로 의료 쪽 인공지능 연구를 많이 해서 병원에서 강연을 많이 하는데, 병원에 가면 항상 비슷한 이야기를 합니다. 병원에서는 한 인간이 소화할 수 없는 양의 데이터가 매일매일 생산됩니다. 그런데 누군가는 그것을 다 알고 있어야 최적의 결정을 내릴 수 있고, 사람은 그것을 못 하니 결국 AI가 병원 전체를 관장하는 코파일럿, 일종의 최고정보책임자 역할을 하게 될 것이라고 늘 말씀드리는데, 그런 것을 구축하시려는 것처럼 보여서 방향은 굉장히 좋다고 생각합니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker">심사위원 3</span><span class="time">1:12:36</span></div>
+    <p>그런데 예전에는 이런 생각을 안 했는데, 최근 AI가 너무 발전하다 보니, 오로라 같은 글로벌 회사의 모든 데이터를 다 볼 수 있을 정도의 강력한 권한을 가진 AI는 개발할 때부터 미리 조심하는 게 좋겠다는 생각이 요즘 듭니다. AI가 해킹을 한다는 사례를 뉴스로 들어 보셨을 텐데, 권한을 너무 많이 주면 사람이 예상하지 못한 일을 하기 시작하면서 서버에 침입한다든가, 보면 안 되는 데이터를 본다든가, 권한이 없는 직원에게 권한을 잘못 부여한다든가, 예를 들어 연봉 정보가 나가 버린다든가 하는 일이 얼마든지 생길 수 있습니다. 그래서 샌드박스 같은 것으로 통제를 정교하게 하는 것이 굉장히 중요하겠다는 생각이 최근에 많이 들었습니다. 워낙 능력이 좋아지다 보니, 일을 시키면 그것을 어떻게든 해내기 위해 온갖 꼼수를 다 찾거든요.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker">심사위원 3</span><span class="time">1:13:31</span></div>
+    <p>이 정도의 권한과 이 정도의 정보를 주는 순간 끼칠 수 있는 해악이 너무 커지기 때문에, 미리 대비하는 게 좋을 것 같습니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (답변)</span><span class="time">1:13:40</span></div>
+    <p>참고로 답변과 감사 말씀을 드리겠습니다. 첫째, 저희 회사는 1980년대에 터미널 방식의 컴퓨터 시스템을 최초로 도입했고, 그다음에 ERP를 개발했는데, 제가 ERP를 전부 개발했습니다. 그러다 보니 MIS 박사도 했고, 저희 ERP 시스템은 제가 개발한 것입니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (답변)</span><span class="time">1:14:20</span></div>
+    <p>그런데 이제 그것을 AX로 전환하려고 하는데, 주니어들이 또 얼마나 열정이 많은지, 벌써 한 3년 전부터 회사에서 디지털 전환 교육을 했고, 지금 교수님께서도 와서 강의를 한 번 해 주셨습니다. 저희 회사에 전산팀이 10여 명 있는데, 전산팀이 중심이 되는 것은 아직 아니지만 각 팀장 중심으로 전산팀과 붙어서 AX 개발을 하고 있기 때문에 빠른 시간 내에 성과를 내야 하는 것 아닌가 생각합니다. 회사의 목표 자체가 AX입니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (답변)</span><span class="time">1:15:07</span></div>
+    <p>그리고 정보 보안 문제를 말씀하셨는데, 암묵지라든가 굉장히 중요한 자료들은 공개하지 않고 있고, 말씀하신 급여 정보처럼 회사의 민감한 정보들은 온프레미스로, 자체 시스템을 사서 하려고 지금 준비하고 있습니다. 아시다시피 저희 ERP에 옛날부터 수십억 원을 투자했습니다. 그런 이야기가 여기에 나와 있지는 않지만 저희는 자체적으로 회사에 갖추려고 생각하고 있습니다. 앞으로도 조언 많이 주시고, 감사합니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker">심사위원 4</span><span class="time">1:15:58</span></div>
+    <p>코멘트 드릴 게 한두 가지 있어서 말씀드리겠습니다. 첫 번째는, 대시보드를 통합 시스템으로 구축하시는 것은 너무 좋은데, 이 대시보드를 기반으로 수익성이나 경영 효율성을 뒷받침하는, 분석 결과를 알기 쉽게 바로바로 리포트해 주고 경영 판단을 도와주는 AI가 또 필요할 수 있겠습니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (답변)</span><span class="time">1:16:37</span></div>
+    <p>그것이 지금 만들고 있는 그 대시보드입니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker">심사위원 4</span><span class="time">1:16:40</span></div>
+    <p>예, 그러니까 이런 내용을 AI가 자체적으로, 자동적으로 해 주면 굉장히 도움이 될 것 같고요. 또 하나는, 지금 전사적으로 여러 조직이 AI 사업을 추진하는데, 이번에 캡스톤도 하시지 않습니까. 회사 내부에 AX, AI를 전담하는 조직이 꼭 필요할 것 같습니다. 그런 조직이 회사의 다양한 부분에 대해 어디에 AX를 하면 좋을지를 AI 전문가의 입장에서 판단하고, 회장님 승인을 얻어서 추진할 수 있게요.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (답변)</span><span class="time">1:17:24</span></div>
+    <p>대표이사가 지금 하고 있습니다.</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker">심사위원 4</span><span class="time">1:17:27</span></div>
+    <p>알겠습니다. 그런 전담 조직이 있으면</p>
+  </div>
+
+  <div class="block">
+    <div class="meta"><span class="speaker presenter">노희열 (답변)</span><span class="time">1:17:28</span></div>
+    <p>대표이사가 저보다 AI에 대한 상식이나 지식이 훨씬 많습니다. 그리고 아까 말씀드린 것처럼 제가 이렇게 AI를 가지고 직접 만들고 하니까 전 직원이 긴장할 수밖에 없죠. 주니어도 마찬가지이고, 그런 면에서는 조직이 더 올라설 수 있지 않나 생각합니다. 오늘 멘토링 감사드립니다. 고맙습니다.</p>
+  </div>
+
+</div>
+<script>
+if (window.self !== window.top || /[?&]embed=1/.test(location.search)) {
+  var b = document.querySelector('.back'); if (b) b.remove();
+}
+</script>
+</body>
+</html>
